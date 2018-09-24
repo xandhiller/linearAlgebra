@@ -47,7 +47,7 @@ matrix_t* matrixInit(int r, int c, int d) {
 
 void printMatrix(const matrix_t* m) {  
   int i, j, k, p, q;
-  q=1;
+  q=0;
   for(p=0, k = 0; k < m->size.depth; k++) {
     printf("Frame %d:\n", k+1);
 
@@ -56,6 +56,26 @@ void printMatrix(const matrix_t* m) {
         m->array[i+j+p] = q;
         q++;
         printf("%.2lf\t", m->array[i+j+p]);  
+      } 
+    p = p + m->size.columns; 
+    printf("\n");  
+    } 
+  
+  } 
+}
+
+
+void printMatrixElmAddress(const matrix_t* m) {  
+  int i, j, k, p, q;
+  q=0;
+  for(p=0, k = 0; k < m->size.depth; k++) {
+    printf("Frame %d:\n", k+1);
+
+    for(i = 0; i < m->size.rows; i++) {  
+      for(j = 0; j < m->size.columns; j++) {  
+        m->array[i+j+p] = q;
+        q++;
+        printf("%p\t", &(m->array[i+j+p]));  
       } 
     p = p + m->size.columns; 
     printf("\n");  
