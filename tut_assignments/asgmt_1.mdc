@@ -1,0 +1,356 @@
+\documentclass{article}
+\author{Alex Hiller 11850637}
+\title{Linear Algebra Autumn 2019 - Assignment 1}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}                % Mathematics
+\usepackage{amssymb}                % Mathematics
+\usepackage{esint}                  % Mathematics
+\usepackage{listings}               % Listings
+\usepackage{color}                  % Listings
+\usepackage{courier}                % Listings
+\usepackage{circuitikz}             % Circuits
+\usepackage{titlesec}               % Section Formatting
+\usepackage{graphicx}               % Graphics
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Question 1}
+
+Augmented matrix:
+\begin{equation}
+  \begin{bmatrix}
+     1 & -2 & -4 & 4 & -1  \\
+    -3 &  6 &  4 & 3 & 10  \\
+    -2 &  4 &  2 & 2 & 6   \\
+    -1 &  2 & -2 & 2 & 1   \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R1 \leftarrow (R1 + R4)$
+
+\begin{equation}
+  \begin{bmatrix}
+     0 & 0 & -6 & 6 & 0  \\
+    -3 &  6 &  4 & 3 & 10  \\
+    -2 &  4 &  2 & 2 & 6   \\
+    -1 &  2 & -2 & 2 & 1   \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R1 \leftrightarrow R4$
+
+\begin{equation}
+  \begin{bmatrix}
+    -1 &  2 & -2 & 2 & 1   \\
+    -3 &  6 &  4 & 3 & 10  \\
+    -2 &  4 &  2 & 2 & 6   \\
+     0 & 0 & -6 & 6 & 0  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R1 \leftarrow (-1 \times R1)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+    -3 &  6 &  4 & 3 & 10  \\
+    -2 &  4 &  2 & 2 & 6   \\
+     0 & 0 & -6 & 6 & 0  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R4 \leftarrow (\frac{1}{6} \times R4 )$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+    -3 &  6 &  4 & 3 & 10  \\
+    -2 &  4 &  2 & 2 & 6   \\
+     0 & 0 & -1 & 1 & 0  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R2 \leftarrow (R2+3\times R1)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+    0 &  0 &  10 & -3 & 7  \\
+    -2 &  4 &  2 & 2 & 6   \\
+     0 & 0 & -1 & 1 & 0  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R3 \leftarrow (R3 + 2 \times R1)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+    0 &  0 &  10 & -3 & 7  \\
+    0 &  0 &  6 & -2 & 4   \\
+     0 & 0 & -1 & 1 & 0  \\
+  \end{bmatrix} 
+\end{equation}
+
+
+Row operation: $R2 \leftrightarrow R4$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+     0 & 0 & -1 & 1 & 0  \\
+    0 &  0 &  6 & -2 & 4   \\
+    0 &  0 &  10 & -3 & 7  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R2 \leftarrow (-1 \times R2)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+     0 & 0 & 1 & -1 & 0  \\
+    0 &  0 &  6 & -2 & 4   \\
+    0 &  0 &  10 & -3 & 7  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R3 \leftarrow (R3 - 6 \times R2)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+     0 & 0 & 1 & -1 & 0  \\
+    0 &  0 &  0 & 4 & 4   \\
+    0 &  0 &  10 & -3 & 7  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R3 \leftarrow (\frac{1}{4} \times R3)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+     0 & 0 & 1 & -1 & 0  \\
+    0 &  0 &  0 & 1 & 1   \\
+    0 &  0 &  10 & -3 & 7  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R4 \leftarrow (R4 - 10 \times R2)$
+
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+     0 & 0 & 1 & -1 & 0  \\
+    0 &  0 &  0 & 1 & 1   \\
+    0 &  0 &  0 & 7 & 7  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R4 \leftarrow (\frac{1}{7} \times R4)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+     0 & 0 & 1 & -1 & 0  \\
+    0 &  0 &  0 & 1 & 1   \\
+    0 &  0 &  0 & 1 & 1  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R4 \leftarrow (R4 - R3)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 2 & -2 & -1   \\
+     0 & 0 & 1 & -1 & 0  \\
+    0 &  0 &  0 & 1 & 1   \\
+    0 &  0 &  0 & 0 & 0  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R1 \leftarrow (R1 - 2 \times R2)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 0 & 0 & -1   \\
+     0 & 0 & 1 & -1 & 0  \\
+    0 &  0 &  0 & 1 & 1   \\
+    0 &  0 &  0 & 0 & 0  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R2 \leftarrow (R2 + R3)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 &  -2 & 0 & 0 & -1   \\
+     0 & 0 & 1 & 0 & 1  \\
+    0 &  0 &  0 & 1 & 1   \\
+    0 &  0 &  0 & 0 & 0  \\
+  \end{bmatrix} 
+\end{equation}
+
+Basic variables: $x_1, x_3, x_4$
+
+Free variable: $x_2$
+
+\begin{equation}
+  \mathbf{x} = 
+  \begin{bmatrix}
+  \begin{aligned}
+    x_1 &= -1 + 2x_2 \\
+    x_3 &= 1 \\ 
+    x_5 &= 1 \\
+  \end{aligned} 
+  \end{bmatrix}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Question 2}
+
+Augmented matrix:
+
+\begin{equation}
+  \begin{bmatrix}
+    3 & 6 & 1 & -2 & -4 & 6 \\
+    1 & 2 & 0 & 1 & -1 & -1 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R1 \leftrightarrow R2$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 & 2 & 0 & 1 & -1 & -1 \\
+    3 & 6 & 1 & -2 & -4 & 6 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R2 \leftarrow (R2 - 3 \times R1)$
+
+\begin{equation}
+  \begin{bmatrix}
+    1 & 2 & 0 & 1 & -1 & -1 \\
+    0 & 0 & 1 & -5 & -1 & 9 \\
+  \end{bmatrix} 
+\end{equation}
+
+Basic variables: $x_1, x_3$
+
+Free variables: $x_2, x_4, x_5$
+
+\begin{equation}
+  \mathbf{x} = 
+  \begin{bmatrix}
+  \begin{aligned}
+    x_1 &= -1 -2x_2 -x_4 +x_5 \\
+    x_3 &= 9 +5x_4 +x_5 \\
+  \end{aligned} 
+  \end{bmatrix}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Question 3}
+
+\begin{equation}    
+  \text{det} \left( \mathbf{A} \right) 
+  =
+  1
+  \begin{vmatrix}
+    9 & 4 \\
+    6 & 5 \\
+  \end{vmatrix}
+  -2
+  \begin{vmatrix}
+    8 & 4 \\
+    7 & 5 \\
+  \end{vmatrix}
+  +3
+  \begin{vmatrix}
+    8 & 9 \\
+    7 & 6 \\
+  \end{vmatrix}
+\end{equation}
+
+\begin{equation}    
+  =1
+  \left( 45 - 24 \right)
+  -2
+  \left( 40-28 \right)
+  -4
+  \left( 48-63  \right) \\
+\end{equation}
+
+\begin{equation}    
+  =-48
+\end{equation}
+
+\begin{equation}    
+  \text{det} \left( \mathbf{B} \right) 
+  =
+  0
+  \begin{vmatrix}
+    1 & 6 & 0 \\
+    1 & 2 & 0 \\
+    -2 & 0 & 3 \\
+  \end{vmatrix}
+  -1
+  \begin{vmatrix}
+    0 & 6 & 0 \\
+    1 & 2 & 0 \\
+    1 & 0 & 3 \\
+  \end{vmatrix}
+  +2
+  \begin{vmatrix}
+    0 & 1 & 0 \\
+    1 & 1 & 0 \\
+    1 & -2 & 3 \\
+  \end{vmatrix}
+  -3
+  \begin{vmatrix}
+    0 & 1 & 6 \\
+    1 & 1 & 2 \\
+    1 & -2 & 0 \\
+  \end{vmatrix}
+\end{equation}
+
+
+\begin{equation}    
+  \text{det} \left( \mathbf{B} \right) 
+  =
+  0
+  -1
+  \left( -6 (3) \right)
+  +2
+  \left( -1(3)  \right)
+  -3
+  \left( -1(-2) + 6 (-2-1) \right)
+\end{equation}
+
+\begin{equation}    
+  \text{det} \left( \mathbf{B} \right) 
+  =
+  18 +6 -3 \left( 2 + -18 \right)
+  =
+  18 +6 +3 \left( 16 \right)
+  \end{equation}
+
+\end{document}
