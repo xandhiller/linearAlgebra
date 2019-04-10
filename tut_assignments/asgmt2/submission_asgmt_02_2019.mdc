@@ -1,0 +1,477 @@
+\documentclass{article} \author{Alex Hiller (11850637)} \title{Assignment 2 - Linear Algebra, Autumn 2019} \setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}                % Mathematics
+\usepackage{amssymb}                % Mathematics
+\usepackage{esint}                  % Mathematics
+\usepackage{listings}               % Listings
+\usepackage{color}                  % Listings
+\usepackage{courier}                % Listings
+\usepackage{circuitikz}             % Circuits
+\usepackage{titlesec}               % Section Formatting
+\usepackage{graphicx}               % Graphics
+\usepackage{stmaryrd}               % \mapsfrom arrow. ↤
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Question 1}
+
+\begin{equation}    
+  \mathbf{A} = 
+  \begin{bmatrix}
+    3  & 0 & -1 & 0 \\
+    9  & 1 & -3 & 4 \\
+    -6 & 0 & -2 & 2 \\
+    0  & 2 &  4 & 8 \\
+  \end{bmatrix} 
+\end{equation}
+
+For LU-decomposition with Doolittle's method: 
+
+\begin{equation}    
+  \mathbf{A} = \mathbf{LU} = 
+  \begin{bmatrix}
+    1         & 0       & 0      & 0 \\
+    \ l_{21}  & 1       & 0      & 0 \\
+    \ l_{31}  & l_{32}  & 1      & 0 \\
+    \ l_{41}  & l_{42}  & l_{43} & 1 \\
+  \end{bmatrix} 
+  \begin{bmatrix}
+    u_{11} & u_{12} & u_{13} & u_{14} \\
+    0      & u_{22} & u_{23} & u_{24} \\
+    0      & 0      & u_{33} & u_{34} \\
+    0      & 0      & 0      & u_{44} \\
+  \end{bmatrix} 
+\end{equation}
+
+Hence:
+
+
+\begin{equation}
+  l_{21} = \frac{a_{21}}{u_{11}} = \frac{9}{3}
+\end{equation}
+
+\begin{equation}    
+  u_{22} = 
+  a_{22} - l_{21} u_{12} = 
+  (1) - (3)(0) = 
+  1
+\end{equation}
+
+\begin{equation}    
+  u_{23} = 
+  a_{23} - l_{21} u_{13} =
+  (-3) - (3)(-1) =
+  0
+\end{equation}
+
+\begin{equation}    
+  u_{24} = 
+  a_{24} - l_{21} u_{14} = 
+  (4) - (3)(0) = 
+  4
+\end{equation}
+
+\begin{equation}    
+  l_{31} = 
+  \frac{a_{31}}{u_{11}} = 
+  \frac{-6}{3} = 
+  -2
+\end{equation}
+
+\begin{equation}    
+  l_{32} =
+  \frac
+  {a_{32} - l_{31} u_{12}}
+  {u_{22}}
+  =
+  \frac{0 - (-2)(0)}{1} =
+  0
+\end{equation}
+
+\begin{equation}    
+  u_{33} = 
+  a_{33}  - l_{31} u_{13} - l_{32} u_{23} =
+  (-2) - (-2)(-1) - (0)(0) =
+  -4
+\end{equation}
+
+\begin{equation}    
+  u_{34} = 
+  a_{34} - l_{31} u_{14} - l_{32} u_{24} =
+  (2) - (-2)(0) - (0)(4) = 
+  2
+\end{equation}
+
+\begin{equation}
+  l_{41} = 
+  \frac {a_{41}} {u_{11}} =
+  \frac {0} {3} =
+  0
+\end{equation}
+
+\begin{equation}    
+  l_{42} =
+  \frac {a_{42} - l_{41} u_{12}} {u_{22}} =
+  \frac {(2) - (0)(0)} {(1)} = 
+  2
+\end{equation}
+
+\begin{equation}    
+  l_{43} = 
+  \frac {a_{43} - l_{41} u_{13} - l_{42} u_{23}} {u_{33}} =
+  \frac {(4) - (0)(-5) - (0)(0)} {-4} = 
+  -1
+\end{equation}
+
+\begin{equation}    
+  a_{44} - l_{41} u_{14} - l_{42} u_{24} - l_{43} u_{34} = 
+  (8) - (0)(0) - (2)(4) -  (2)\bigg(\frac{1}{2}\bigg) =
+  8 - 8 + 2 = 
+  2
+\end{equation}
+
+Therefore:
+
+\begin{equation}    
+  \mathbf{A} = \mathbf{LU} =
+  \begin{bmatrix}
+    1 &  0 &  0 & 0 \\
+    3 &  1 &  0 & 0 \\
+    -2 &  0 &  1 & 0 \\
+     0 &  2 & -1 & 1 \\
+  \end{bmatrix} 
+  \begin{bmatrix}
+     3 &  0 & -1 & 0 \\
+     0 &  1 &  0 & 4 \\
+     0 &  0 & -4 & 2 \\
+     0 &  0 &  0 & 2 \\
+  \end{bmatrix}
+\end{equation}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{Question 2}
+Some matrix algebra indicates to us how to solve the system, given our matrices
+obtained during decomposition.
+$$ \mathbf{Ax} = \mathbf{b} $$
+$$ \mathbf{LUx} = \mathbf{b} $$
+$$ \mathbf{L^{-1}LUx} = \mathbf{L^{-1}b} $$
+$$ \mathbf{U^{-1}Ux} = \mathbf{U^{-1}L^{-1}b} $$
+$$ \mathbf{x} = \mathbf{U^{-1}L^{-1}b} $$
+
+So, we must find $\mathbf{U^{-1}}$ and $\mathbf{L^{-1}}$, which is easily 
+computable with python's sympy package.
+
+\begin{verbatim}
+  >>> from sympy import *
+  >>> L = Matrix([[1,0,0,0],[3,1,0,0],[-2,0,1,0],[0,2,-1,1]])
+  >>> U = Matrix([[3,0,-1,0],[0,1,0,4],[0,0,-4,2],[0,0,0,2]])
+  >>> b = Matrix([0,18,-4,48])
+  >>> L.inv()
+  Matrix([
+  [ 1,  0, 0, 0],
+  [-3,  1, 0, 0],
+  [ 2,  0, 1, 0],
+  [ 8, -2, 1, 1]])
+  >>> U.inv()
+  Matrix([
+  [1/3, 0, -1/12, 1/12],
+  [  0, 1,     0,   -2],
+  [  0, 0,  -1/4,  1/4],
+  [  0, 0,     0,  1/2]])
+  >>> b = Matrix([0,18,-4,48])
+  >>> U.inv() * L.inv() * b
+  Matrix([
+  [1],
+  [2],
+  [3],
+  [4]])
+
+\end{verbatim}
+
+\begin{center}
+Continued on next page
+\end{center}
+\clearpage
+We get:
+
+$$
+  \mathbf{L^{-1}} =
+  \begin{bmatrix}
+     1 &  0 &  0 & 0 \\
+    -3 &  1 &  0 & 0 \\
+     2 &  0 &  1 & 0 \\
+     8 & -2 &  1 & 1 \\
+  \end{bmatrix} 
+$$
+$$
+  \mathbf{U^{-1}} =
+  \begin{bmatrix}
+     1/3 &  0 & -1/12 & 1/12 \\
+     0 &  1 &  0 & -2 \\
+     0 &  0 & -1/4 & 1/4 \\
+     0 &  0 &  0 & 1/2 \\
+  \end{bmatrix}
+$$
+
+
+And recalling that: 
+
+$$
+\mathbf{b} =
+\begin{bmatrix}
+  0 \\ 18 \\ -4 \\ 48 \\
+\end{bmatrix} 
+$$
+
+Hence, as the code prior showed:
+
+$$
+  \mathbf{U^{-1}}
+  \mathbf{L^{-1}} 
+  \mathbf{b} = 
+  \mathbf{x} =
+  \begin{bmatrix}
+    1 \\ 2 \\ 3 \\ 4 \\
+  \end{bmatrix} 
+$$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{Question 3}
+\subsection{Part (a)}
+Using Crout's method:
+
+$$ l_{11} = a_{11} = -1 $$
+
+$$ l_{21} = a_{21} =  3 $$
+
+$$ l_{31} = a_{31} =  2 $$
+
+$$ u_{12} = \frac{a_{12}}{l_{11}} = 1/(-1) = -1$$
+
+$$ u_{13} = \frac{a_{13}}{l_{11}} = 0/(-1) = 0 $$
+
+$$ l_{22} = a_{22} - l_{21} u_{12} = (-1) - (3)(-1) = 2$$
+
+$$ 
+u_{23} = 
+\frac{a_{23} - l_{21} u_{13}}{l_{22}} = 
+\frac{(2) - (3)(0)}{2} = 
+-1 
+$$
+
+$$ l_{32} = a_{32} - l_{31} u_{12} = (-4) - (2) (1) = -2 $$
+
+$$ 
+l_{33} = 
+a_{33} - l_{31} u_{13} - l_{32} u_{23} = 
+(5) - (2)(0) - (-2)(-1) =
+3
+$$
+
+Hence we have:
+
+$$ 
+\mathbf{A} = 
+\mathbf{LU} = 
+\begin{bmatrix}
+  -1 & 0 & 0 \\
+  3 & 2 & 0 \\
+  2 & -2 & 3 \\
+\end{bmatrix} 
+\begin{bmatrix}
+  1 & -1 & 0 \\
+  0 & 1 & -1 \\
+  0 & 0 & 1 \\
+\end{bmatrix} 
+$$  
+
+\begin{center}
+Part (b) on next page.
+\end{center}
+
+\clearpage
+\subsection{Part (b)}
+
+Again, using python's sympy package:
+\begin{verbatim}
+  >>> from sympy import *
+  >>> L = Matrix([[-1,0,0],[3,2,0],[2,-2,3]])
+  >>> U = Matrix([[1,-1,0],[0,1,-1],[0,0,1]])
+  >>> L*U
+  Matrix([
+  [-1,  1,  0],
+  [ 3, -1, -2],
+  [ 2, -4,  5]])
+  >>> b = Matrix([-2,10,3])
+  >>> U.inv() * L.inv() * b
+  Matrix([
+  [5],
+  [3],
+  [1]])
+\end{verbatim}
+
+Hence:
+
+\begin{equation}    
+  \mathbf{x} = 
+  \begin{bmatrix}
+    5 \\ 3 \\ 1 \\
+  \end{bmatrix} 
+\end{equation}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{Question 4}
+\subsection{Part (a)}
+Because we have a symmetric matrix, we may be able to use Choleski's method.
+
+Where: 
+
+$$
+\mathbf{A} = \mathbf{A}^{T} = \mathbf{LU} = (\mathbf{LU})^{T} 
+\Rightarrow \mathbf{{U}}^{T}\mathbf{U}
+$$
+
+$$ u_{11} = \sqrt{a_{11}} = 2 $$
+
+$$ u_{12} = \frac{a_{12}}{u_{11}} = \frac{6}{2} = 3 $$
+
+$$ u_{13} = \frac{a_{13}}{u_{11}} = \frac{-2}{2} = -1 $$
+
+$$ u_{22} = \sqrt{a_{22} - u^{2}_{12}} = \sqrt{10 - 9} = 1 $$
+
+$$ 
+u_{23} = \frac{a_{23} - u_{12} u_{13}}{u_{22}} =  
+\frac{(-1) - (3)(-1)}{1} = 2 
+$$
+
+$$
+u_{33} = \sqrt{a_{33} - - u^{2}_{12} - u^{2}_{23}} = 
+\sqrt{(14)-(-2)^2-(-1)^2} = 
+\sqrt{14-5} = 3
+$$
+
+Hence:
+
+$$
+\mathbf{U} = 
+\begin{bmatrix}
+  2 & 3 & -1 \\
+  0 & 1 & 2 \\
+  0 & 0 & 3 \\
+\end{bmatrix} \ \
+\text{  and  } \ \
+\mathbf{U}^{T} = 
+\begin{bmatrix}
+  2 & 0 & 0 \\
+  3 & 1 & 0 \\
+  -1 & 2 & 3 \\
+\end{bmatrix} 
+$$
+
+\begin{center}
+Part (b) on next page.
+\end{center}
+
+\clearpage
+\subsection{Part (b)}
+
+$$ 
+\mathbf{A} = 
+\mathbf{A} = \mathbf{A}^{T} = \mathbf{LU} = (\mathbf{LU})^{T} = 
+\mathbf{{U}}^{T}\mathbf{L}^{T} \Rightarrow \mathbf{{U}}^{T}\mathbf{U}
+$$
+
+And recalling that:
+
+$$
+\mathbf{b} =
+\begin{bmatrix}
+  2 \\ 3 \\ 10 \\
+\end{bmatrix} 
+$$
+
+We can solve the system with python's sympy package:
+
+\begin{verbatim}
+  >>> from sympy import *
+  >>> U = Matrix([[2,3,-1],[0,1,2],[0,0,3]])
+  >>> b = Matrix([2,3,-10])
+  >>> U.T * U      # Check that it is in fact equal to A
+  Matrix([
+  [ 4,  6, -2],
+  [ 6, 10, -1],
+  [-2, -1, 14]])
+  >>> U.inv() * U.T.inv() * b
+  Matrix([
+  [-3],
+  [ 2],
+  [-1]])
+\end{verbatim}
+
+Hence:
+
+$$
+\mathbf{x} =
+\begin{bmatrix}
+-3 \\ \ \ 2 \\ -1 \\
+\end{bmatrix} 
+$$
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\section{Question 5}
+For the first two matrices (Q1 and Q3) you can test for the existence of the
+LU-decompositions with a sufficient condition of strict diagonal dominance. 
+
+\begin{equation}    
+  | a_{ii} | >
+  \sum^{n}_{j=1, j \neq i} | a_{ij} | 
+\end{equation}
+
+If the matrix is diagonally dominant, then it is non-singular and can also be decomposed 
+into a lower-triangular $\mathbf{L}$ and an upper-triangular $\mathbf{U}$ that satisfy: $\mathbf{A} = \mathbf{LU}$
+
+For question 4, because we are using the Cholesky method, for it to \textit{definitely} work
+we need it to be a positive definite matrix. This can be satisfied with two steps:
+
+\begin{center}
+1. If the matrix is diagonally dominant, and
+
+2. If the diagonal elements are all greater than zero.
+\end{center}
+
+For our matrices, they all fail their respective tests, i.e. the matrices in Q1, Q3 and Q4 are all not strictly diagonally dominant. 
+
+However, because this is a sufficient but not necessary condition, we still succeeded in decomposition.
+
+\end{document}

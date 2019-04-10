@@ -14,6 +14,7 @@
 \usepackage{circuitikz}             % Circuits
 \usepackage{titlesec}               % Section Formatting
 \usepackage{graphicx}               % Graphics
+\usepackage{stmaryrd}
 \input{/home/polluticorn/GitHub/texTemplates/texMacros}
 % Section formatting
 \titleformat{\section}{\huge \bfseries}{}{0em}{}[]
@@ -39,7 +40,7 @@ Augmented matrix:
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R1 \leftarrow (R1 + R4)$
+Row operation: $R1 \mapsfrom (R1 + R4)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -61,7 +62,7 @@ Row operation: $R1 \leftrightarrow R4$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R1 \leftarrow (-1 \times R1)$
+Row operation: $R1 \mapsfrom (-1 \times R1)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -72,7 +73,7 @@ Row operation: $R1 \leftarrow (-1 \times R1)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R4 \leftarrow (\frac{1}{6} \times R4 )$
+Row operation: $R4 \mapsfrom (\frac{1}{6} \times R4 )$
 
 \begin{equation}
   \begin{bmatrix}
@@ -83,7 +84,7 @@ Row operation: $R4 \leftarrow (\frac{1}{6} \times R4 )$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R2 \leftarrow (R2+3\times R1)$
+Row operation: $R2 \mapsfrom (R2+3\times R1)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -94,7 +95,7 @@ Row operation: $R2 \leftarrow (R2+3\times R1)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R3 \leftarrow (R3 + 2 \times R1)$
+Row operation: $R3 \mapsfrom (R3 + 2 \times R1)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -117,7 +118,7 @@ Row operation: $R2 \leftrightarrow R4$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R2 \leftarrow (-1 \times R2)$
+Row operation: $R2 \mapsfrom (-1 \times R2)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -128,7 +129,7 @@ Row operation: $R2 \leftarrow (-1 \times R2)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R3 \leftarrow (R3 - 6 \times R2)$
+Row operation: $R3 \mapsfrom (R3 - 6 \times R2)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -139,7 +140,7 @@ Row operation: $R3 \leftarrow (R3 - 6 \times R2)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R3 \leftarrow (\frac{1}{4} \times R3)$
+Row operation: $R3 \mapsfrom (\frac{1}{4} \times R3)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -150,7 +151,7 @@ Row operation: $R3 \leftarrow (\frac{1}{4} \times R3)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R4 \leftarrow (R4 - 10 \times R2)$
+Row operation: $R4 \mapsfrom (R4 - 10 \times R2)$
 
 
 \begin{equation}
@@ -162,7 +163,7 @@ Row operation: $R4 \leftarrow (R4 - 10 \times R2)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R4 \leftarrow (\frac{1}{7} \times R4)$
+Row operation: $R4 \mapsfrom (\frac{1}{7} \times R4)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -173,7 +174,7 @@ Row operation: $R4 \leftarrow (\frac{1}{7} \times R4)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R4 \leftarrow (R4 - R3)$
+Row operation: $R4 \mapsfrom (R4 - R3)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -184,7 +185,7 @@ Row operation: $R4 \leftarrow (R4 - R3)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R1 \leftarrow (R1 - 2 \times R2)$
+Row operation: $R1 \mapsfrom (R1 - 2 \times R2)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -195,7 +196,7 @@ Row operation: $R1 \leftarrow (R1 - 2 \times R2)$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R2 \leftarrow (R2 + R3)$
+Row operation: $R2 \mapsfrom (R2 + R3)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -243,7 +244,7 @@ Row operation: $R1 \leftrightarrow R2$
   \end{bmatrix} 
 \end{equation}
 
-Row operation: $R2 \leftarrow (R2 - 3 \times R1)$
+Row operation: $R2 \mapsfrom (R2 - 3 \times R1)$
 
 \begin{equation}
   \begin{bmatrix}
@@ -300,6 +301,8 @@ Free variables: $x_2, x_4, x_5$
 \end{equation}
 
 \begin{equation}    
+  \text{det}
+  (\mathbf{A})
   =-48
 \end{equation}
 
@@ -336,21 +339,245 @@ Free variables: $x_2, x_4, x_5$
 \begin{equation}    
   \text{det} \left( \mathbf{B} \right) 
   =
-  0
-  -1
-  \left( -6 (3) \right)
-  +2
-  \left( -1(3)  \right)
-  -3
-  \left( -1(-2) + 6 (-2-1) \right)
+  (0) B_{11} + 
+  B_{12} +
+  (2) B_{13} + 
+  (3) B_{14}
 \end{equation}
+
+Calculating the cofactors:
+\begin{equation}    
+  B_{12} = (-1)^{1+2}
+  \begin{vmatrix}
+    0 & 6 & 0 \\
+    1 & 2 & 0 \\
+    1 & 0 & 3 \\
+  \end{vmatrix}
+  = 
+  (-1)(-6)(3 - 0)
+  = 18
+\end{equation}
+
+\begin{equation}    
+  B_{13} 
+  = 
+  (-1)^{1+3}
+  \begin{vmatrix}
+    0 &  1 & 0 \\
+    1 &  1 & 0 \\
+    1 & -2 & 3 \\
+  \end{vmatrix}
+  = (1)(-1)(3-0)
+  = -3
+\end{equation}
+
+\begin{equation}    
+  B_{14} 
+  = 
+  (-1)^{1+4}
+  \begin{vmatrix}
+    0 &  1 & 6 \\
+    1 &  1 & 2 \\
+    1 & -2 & 0 \\
+  \end{vmatrix}
+  = (-1)\big((-1)(0-2) + 6(-3)\big)
+  = (-1)(2-18) 
+  = 16
+\end{equation}
+
+Then calculating the determinant:
 
 \begin{equation}    
   \text{det} \left( \mathbf{B} \right) 
   =
-  18 +6 -3 \left( 2 + -18 \right)
-  =
-  18 +6 +3 \left( 16 \right)
-  \end{equation}
+  (0)  + 
+  18 +
+  (2) (-3) + 
+  (3) (16)
+  = 12 + 48
+\end{equation}
+  
+\begin{equation}    
+  \text{det}
+  (\mathbf{B}) 
+  = 
+  60
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Question 4}
+
+\begin{equation}    
+  (\mathbf{A}) =
+  \begin{bmatrix}
+     1 &  0 &  7 \\
+    -1 &  2 &  0 \\
+    -2 &  5 &  3 \\
+  \end{bmatrix} 
+\end{equation}
+
+If: $\text{det}\mathbf{A} = 0$ then it is a singular matrix.
+
+\begin{equation}    
+  \text{det} (\mathbf{A}) 
+  = 
+  1 \bigg(  (2) (3) - (5) (0)    \bigg)
+  + 
+  7 \bigg( (-1) (5) - (2) (-2)  \bigg)
+\end{equation}
+
+\begin{equation}
+  \text{det} (\mathbf{A}) 
+  = 
+  6-7 
+  = -1
+\end{equation}
+
+\begin{equation}    
+  \therefore \text{det} (\mathbf{A}) \neq 0 \Rightarrow \mathbf{A} \text{ is non-singular} 
+  \Rightarrow \mathbf{A} \text{ has an inverse}
+\end{equation}
+
+
+Append identity matrix, forming augmented matrix for Gaussian elimination.
+
+\begin{equation}    
+  \mathbf{A | I }=
+  \begin{bmatrix}
+     1 &  0 &  7 &  1 &  0 &  0 \\
+    -1 &  2 &  0 &  0 &  1 &  0 \\
+    -2 &  5 &  3 &  0 &  0 &  1 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R3 \mapsfrom \left( R3 + 2 \times R1 \right)$
+
+\begin{equation}    
+  \begin{bmatrix}
+     1 &  0 &  7 &  1 &  0 &  0 \\
+    -1 &  2 &  0 &  0 &  1 &  0 \\
+     0 &  5 & 17 &  2 &  0 &  1 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R2 \leftrightarrow R3$
+
+\begin{equation}    
+  \begin{bmatrix}
+     1 &  0 &  7 &  1 &  0 &  0 \\
+     0 &  5 & 17 &  2 &  0 &  1 \\
+    -1 &  2 &  0 &  0 &  1 &  0 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R3 \mapsfrom \left( R3 + R1 \right) $
+
+\begin{equation}    
+  \begin{bmatrix}
+     1 &  0 &  7 &  1 &  0 &  0 \\
+     0 &  5 & 17 &  2 &  0 &  1 \\
+     0 &  2 &  7 &  1 &  1 &  0 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R3 \mapsfrom \left( R3 - \frac{2}{5} R2 \right)$
+
+\begin{equation}    
+  \begin{bmatrix}
+     1 &  0 &  7            &            1 &  0 &  0             \\
+     0 &  5 & 17            &            2 &  0 &  1             \\
+     0 &  0 &  \frac{1}{5}  &  \frac{1}{5} &  1 &  \frac{-2}{5}  \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R3 \mapsfrom \left( 5 \times R3 \right)$
+
+\begin{equation}    
+  \begin{bmatrix}
+     1 &  0 &  7 &  1 &  0 &  0 \\
+     0 &  5 & 17 &  2 &  0 &  1 \\
+     0 &  0 &  1 &  1 &  1 & -2 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R2 \mapsfrom \left( R1 - 17 \times R3 \right)$
+
+\begin{equation}    
+  \begin{bmatrix}
+     1 &  0 &  7 &   1  &    0 &   0 \\
+     0 &  5 &  0 & -15  &  -85 &  35 \\
+     0 &  0 &  1 &   1  &    1 &  -2 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R2 \mapsfrom \left( \frac{1}{5} \times R2 \right)$
+
+\begin{equation}    
+  \begin{bmatrix}
+     1 &  0 &  7 &  1  &    0 &   0 \\
+     0 &  1 &  0 & -3  &  -17 &   7 \\
+     0 &  0 &  1 &  1  &    1 &  -2 \\
+  \end{bmatrix} 
+\end{equation}
+
+Row operation: $R1 \mapsfrom \left( R1 - 7 \times R3  \right)$
+
+\begin{equation}    
+  \begin{bmatrix}
+     1 &  0 &  0 &  -6  & -35 &  14 \\
+     0 &  1 &  0 & -3  &  -17 &   7 \\
+     0 &  0 &  1 &  1  &    1 &  -2 \\
+  \end{bmatrix}  
+  = \mathbf{I} | \mathbf{A}^{-1} 
+\end{equation}
+
+
+\begin{equation}    
+  \therefore
+  \mathbf{A}^{-1} = 
+  \begin{bmatrix}
+      -6  & -35 &  14 \\
+     -3  &  -17 &   7 \\
+      1  &    1 &  -2 \\
+  \end{bmatrix}  
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\subsection{Question 5}
+
+\begin{equation}    
+  \mathbf{A} =
+  \begin{bmatrix}
+     a_{11}  &   2 &  1   \\
+     5       &  -1 &   2  \\
+     -3      &  1  &  -1  \\
+  \end{bmatrix}  
+\end{equation}
+
+If $\text{det} (\mathbf{A}) = 0 \Rightarrow \mathbf{A} \text{ is singular}$
+
+\begin{equation}    
+  \text{det} (\mathbf{A}) = 
+  a_{11} \bigg( (-1) (-1) -  (2) (1)  \bigg)  
+  - 2 \bigg( (5) (-1) - (-3) (2) \bigg)
+  + 1 \bigg( (5) (1)  - (-1) (-3) \bigg)
+  = 0
+\end{equation}
+
+
+\begin{equation}    
+  0 =    a_{11} \left( 1-2\right)  
+  - 2 \left( -5+6 \right)
+  + 1 \left( 5-3 \right)
+\end{equation}
+
+\begin{equation}    
+  a_{11} = 0
+\end{equation}
+
+Therefore, if you want $\mathbf{A}$ to be singular $a_{11}$ must be set to zero.
 
 \end{document}
