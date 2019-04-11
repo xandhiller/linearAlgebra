@@ -1,0 +1,89 @@
+\documentclass{article}
+\author{Alex Hiller}
+\title{Assignment 3 - Linear Algebra, 2019}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}                % Mathematics
+\usepackage{amssymb}                % Mathematics
+\usepackage{esint}                  % Mathematics
+\usepackage{listings}               % Listings
+\usepackage{color}                  % Listings
+\usepackage{courier}                % Listings
+\usepackage{circuitikz}             % Circuits
+\usepackage{titlesec}               % Section Formatting
+\usepackage{graphicx}               % Graphics
+\usepackage{stmaryrd}               % \mapsfrom arrow. ↤
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Question 1}
+
+Gaussian iteration is given by:
+
+\begin{equation}
+  x^{k+1}_{i} = 
+  \frac{1}{a_{ii}}
+  \bigg( b_{i} - \sum^{n}_{j=1,j\neq i} a_{ij} x_{j} \bigg)
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Question 2}
+<++>
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Question 3}
+<++>
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Question 4}
+
+If the matrix is diagonally dominant, then it is known that Gauss-Siedel
+and Jacobi methods will converge.
+
+For our matrix, $\mathbf{A}$:
+
+$$
+\mathbf{A} = 
+\begin{bmatrix}
+  1 & 0 & -1 \\
+  1 & 2 & -1 \\
+  2 & -1 & 3 \\
+\end{bmatrix} 
+$$
+
+We can see that it is diagonally dominant (but not strictly diagonally dominant).
+
+And so it should converge for the Jacobi and Gauss-Siedel methods, which it does,
+as we've seen in previous questions.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Question 5}
+<++>
+
+
+
+\end{document}

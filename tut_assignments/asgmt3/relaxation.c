@@ -3,8 +3,8 @@
  * Year: 2019
  *
  * Program Description: 
- *    Implementation of the Gauss-Siedel algorithm for approaching solutions of
- *    Ax=b ⇒ x = A^-1 b
+ *    Implementation of the Gauss-Siedel algorithm with a relaxation parameter 
+ *    for approaching solutions of Ax=b ⇒ x = A^-1 b
  *
  */
 
@@ -15,7 +15,7 @@
 
 #define INITIAL_GUESS   {0,0,0}
 #define ITERS           10
-#define OMEGA           0.5
+#define OMEGA           0.9
 
 float* copyMat(float* val, float* store);
 void printMat1d(float* mat);

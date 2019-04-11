@@ -15,10 +15,9 @@
 #include <math.h>
 
 #define INITIAL_GUESS   {0,0,0}
-#define ITERS           40
+#define ITERS           4
 
 
-/* void printMat2d(float* mat[3]); FIXME */
 float* copyMat(float* val, float* store);
 void printMat1d(float* mat);
 
@@ -44,14 +43,13 @@ main (int argc, char *argv[]) {
             }
             x_n[i] = (1/(A[i][i]))*(b[i] - sum);
         }
-        printf("Iteration %i\nx_n:\n", iter);
+        printf("Iteration %i\nx_n:\n", iter+1);
         printMat1d(x_n);
         printf("x_nm1:\n");
         printMat1d(x_nm1);
         printf("\n");
         copyMat(x_n, x_nm1);
     }
-    
     return 0;
 }
 
@@ -68,6 +66,11 @@ copyMat(float* val, float* store) {
         store[i] = val[i];
     return store;
 }
+
+
+
+
+/* void printMat2d(float* mat[3]); FIXME */
 
 /* FIXME 
  * void printMat2d(float** mat) { 
