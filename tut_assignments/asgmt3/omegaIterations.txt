@@ -1,0 +1,545 @@
+x_(1):
+-0.400000			0.220000			0.634000
+
+relative precision w/ supremum norm is: 1.000000
+
+
+x_(2):
+-0.696600			0.464530			1.232524
+
+relative precision w/ supremum norm is: 0.485609
+
+
+x_(3):
+-0.903688			0.724888			1.793681
+
+relative precision w/ supremum norm is: 0.312852
+
+
+x_(4):
+-1.033951			0.993780			2.316369
+
+relative precision w/ supremum norm is: 0.225650
+
+
+x_(5):
+-1.098919			1.265167			2.800165
+
+relative precision w/ supremum norm is: 0.172774
+
+
+x_(6):
+-1.109010			1.534109			3.245220
+
+relative precision w/ supremum norm is: 0.137141
+
+
+x_(7):
+-1.073587			1.796638			3.652158
+
+relative precision w/ supremum norm is: 0.111424
+
+
+x_(8):
+-1.001013			2.049633			4.021998
+
+relative precision w/ supremum norm is: 0.091954
+
+
+x_(9):
+-0.898712			2.290705			4.356069
+
+relative precision w/ supremum norm is: 0.076691
+
+
+x_(10):
+-0.773234			2.518100			4.655948
+
+relative precision w/ supremum norm is: 0.064408
+
+
+x_(11):
+-0.630315			2.730603			4.923394
+
+relative precision w/ supremum norm is: 0.054322
+
+
+x_(12):
+-0.474944			2.927460			5.160300
+
+relative precision w/ supremum norm is: 0.045909
+
+
+x_(13):
+-0.311420			3.108300			5.368641
+
+relative precision w/ supremum norm is: 0.038807
+
+
+x_(14):
+-0.143414			3.273072			5.550440
+
+relative precision w/ supremum norm is: 0.032754
+
+
+x_(15):
+0.025972			3.421989			5.707731
+
+relative precision w/ supremum norm is: 0.029676
+
+
+x_(16):
+0.194147			3.555469			5.842531
+
+relative precision w/ supremum norm is: 0.028785
+
+
+x_(17):
+0.358986			3.674099			5.956815
+
+relative precision w/ supremum norm is: 0.027672
+
+
+x_(18):
+0.518769			3.778592			6.052502
+
+relative precision w/ supremum norm is: 0.026399
+
+
+x_(19):
+0.672142			3.869751			6.131434
+
+relative precision w/ supremum norm is: 0.025014
+
+
+x_(20):
+0.818071			3.948444			6.195367
+
+relative precision w/ supremum norm is: 0.023555
+
+
+x_(21):
+0.955801			4.015578			6.245963
+
+relative precision w/ supremum norm is: 0.022051
+
+
+x_(22):
+1.084817			4.072077			6.284781
+
+relative precision w/ supremum norm is: 0.020528
+
+
+x_(23):
+1.204813			4.118868			6.313278
+
+relative precision w/ supremum norm is: 0.019007
+
+
+x_(24):
+1.315660			4.156862			6.332802
+
+relative precision w/ supremum norm is: 0.017504
+
+
+x_(25):
+1.417374			4.186947			6.344595
+
+relative precision w/ supremum norm is: 0.016032
+
+
+x_(26):
+1.510096			4.209977			6.349795
+
+relative precision w/ supremum norm is: 0.014602
+
+
+x_(27):
+1.594066			4.226766			6.349436
+
+relative precision w/ supremum norm is: 0.013225
+
+
+x_(28):
+1.669603			4.238081			6.344455
+
+relative precision w/ supremum norm is: 0.011906
+
+
+x_(29):
+1.737088			4.244641			6.335692
+
+relative precision w/ supremum norm is: 0.010652
+
+
+x_(30):
+1.796949			4.247114			6.323896
+
+relative precision w/ supremum norm is: 0.009466
+
+
+x_(31):
+1.849643			4.246115			6.309734
+
+relative precision w/ supremum norm is: 0.008351
+
+
+x_(32):
+1.895652			4.242208			6.293791
+
+relative precision w/ supremum norm is: 0.007310
+
+
+x_(33):
+1.935466			4.235903			6.276577
+
+relative precision w/ supremum norm is: 0.006343
+
+
+x_(34):
+1.969577			4.227663			6.258537
+
+relative precision w/ supremum norm is: 0.005450
+
+
+x_(35):
+1.998473			4.217900			6.240048
+
+relative precision w/ supremum norm is: 0.004631
+
+
+x_(36):
+2.022631			4.206981			6.221434
+
+relative precision w/ supremum norm is: 0.003883
+
+
+x_(37):
+2.042511			4.195229			6.202964
+
+relative precision w/ supremum norm is: 0.003205
+
+
+x_(38):
+2.058557			4.182926			6.184862
+
+relative precision w/ supremum norm is: 0.002594
+
+
+x_(39):
+2.071187			4.170317			6.167307
+
+relative precision w/ supremum norm is: 0.002048
+
+
+x_(40):
+2.080799			4.157611			6.150444
+
+relative precision w/ supremum norm is: 0.001563
+
+
+x_(41):
+2.087764			4.144984			6.134381
+
+relative precision w/ supremum norm is: 0.001135
+
+
+x_(42):
+2.092425			4.132583			6.119201
+
+relative precision w/ supremum norm is: 0.000762
+
+
+x_(43):
+2.095103			4.120530			6.104958
+
+relative precision w/ supremum norm is: 0.000439
+
+
+x_(44):
+2.096088			4.108920			6.091687
+
+relative precision w/ supremum norm is: 0.000162
+
+
+x_(45):
+2.095648			4.097830			6.079403
+
+relative precision w/ supremum norm is: 0.000072
+
+
+[STOPPING]
+Relative precision of 0.000100 has been reached.
+x_(1):
+-0.400000			0.220000			0.634000
+
+relative precision w/ supremum norm is: 1.000000
+
+
+x_(2):
+-0.696600			0.464530			1.232524
+
+relative precision w/ supremum norm is: 0.485609
+
+
+x_(3):
+-0.903688			0.724888			1.793681
+
+relative precision w/ supremum norm is: 0.312852
+
+
+x_(4):
+-1.033951			0.993780			2.316369
+
+relative precision w/ supremum norm is: 0.225650
+
+
+x_(5):
+-1.098919			1.265167			2.800165
+
+relative precision w/ supremum norm is: 0.172774
+
+
+x_(6):
+-1.109010			1.534109			3.245220
+
+relative precision w/ supremum norm is: 0.137141
+
+
+x_(7):
+-1.073587			1.796638			3.652158
+
+relative precision w/ supremum norm is: 0.111424
+
+
+x_(8):
+-1.001013			2.049633			4.021998
+
+relative precision w/ supremum norm is: 0.091954
+
+
+x_(9):
+-0.898712			2.290705			4.356069
+
+relative precision w/ supremum norm is: 0.076691
+
+
+x_(10):
+-0.773234			2.518100			4.655948
+
+relative precision w/ supremum norm is: 0.064408
+
+
+x_(11):
+-0.630315			2.730603			4.923394
+
+relative precision w/ supremum norm is: 0.054322
+
+
+x_(12):
+-0.474944			2.927460			5.160300
+
+relative precision w/ supremum norm is: 0.045909
+
+
+x_(13):
+-0.311420			3.108300			5.368641
+
+relative precision w/ supremum norm is: 0.038807
+
+
+x_(14):
+-0.143414			3.273072			5.550440
+
+relative precision w/ supremum norm is: 0.032754
+
+
+x_(15):
+0.025972			3.421989			5.707731
+
+relative precision w/ supremum norm is: 0.029676
+
+
+x_(16):
+0.194147			3.555469			5.842531
+
+relative precision w/ supremum norm is: 0.028785
+
+
+x_(17):
+0.358986			3.674099			5.956815
+
+relative precision w/ supremum norm is: 0.027672
+
+
+x_(18):
+0.518769			3.778592			6.052502
+
+relative precision w/ supremum norm is: 0.026399
+
+
+x_(19):
+0.672142			3.869751			6.131434
+
+relative precision w/ supremum norm is: 0.025014
+
+
+x_(20):
+0.818071			3.948444			6.195367
+
+relative precision w/ supremum norm is: 0.023555
+
+
+x_(21):
+0.955801			4.015578			6.245963
+
+relative precision w/ supremum norm is: 0.022051
+
+
+x_(22):
+1.084817			4.072077			6.284781
+
+relative precision w/ supremum norm is: 0.020528
+
+
+x_(23):
+1.204813			4.118868			6.313278
+
+relative precision w/ supremum norm is: 0.019007
+
+
+x_(24):
+1.315660			4.156862			6.332802
+
+relative precision w/ supremum norm is: 0.017504
+
+
+x_(25):
+1.417374			4.186947			6.344595
+
+relative precision w/ supremum norm is: 0.016032
+
+
+x_(26):
+1.510096			4.209977			6.349795
+
+relative precision w/ supremum norm is: 0.014602
+
+
+x_(27):
+1.594066			4.226766			6.349436
+
+relative precision w/ supremum norm is: 0.013225
+
+
+x_(28):
+1.669603			4.238081			6.344455
+
+relative precision w/ supremum norm is: 0.011906
+
+
+x_(29):
+1.737088			4.244641			6.335692
+
+relative precision w/ supremum norm is: 0.010652
+
+
+x_(30):
+1.796949			4.247114			6.323896
+
+relative precision w/ supremum norm is: 0.009466
+
+
+x_(31):
+1.849643			4.246115			6.309734
+
+relative precision w/ supremum norm is: 0.008351
+
+
+x_(32):
+1.895652			4.242208			6.293791
+
+relative precision w/ supremum norm is: 0.007310
+
+
+x_(33):
+1.935466			4.235903			6.276577
+
+relative precision w/ supremum norm is: 0.006343
+
+
+x_(34):
+1.969577			4.227663			6.258537
+
+relative precision w/ supremum norm is: 0.005450
+
+
+x_(35):
+1.998473			4.217900			6.240048
+
+relative precision w/ supremum norm is: 0.004631
+
+
+x_(36):
+2.022631			4.206981			6.221434
+
+relative precision w/ supremum norm is: 0.003883
+
+
+x_(37):
+2.042511			4.195229			6.202964
+
+relative precision w/ supremum norm is: 0.003205
+
+
+x_(38):
+2.058557			4.182926			6.184862
+
+relative precision w/ supremum norm is: 0.002594
+
+
+x_(39):
+2.071187			4.170317			6.167307
+
+relative precision w/ supremum norm is: 0.002048
+
+
+x_(40):
+2.080799			4.157611			6.150444
+
+relative precision w/ supremum norm is: 0.001563
+
+
+x_(41):
+2.087764			4.144984			6.134381
+
+relative precision w/ supremum norm is: 0.001135
+
+
+x_(42):
+2.092425			4.132583			6.119201
+
+relative precision w/ supremum norm is: 0.000762
+
+
+x_(43):
+2.095103			4.120530			6.104958
+
+relative precision w/ supremum norm is: 0.000439
+
+
+x_(44):
+2.096088			4.108920			6.091687
+
+relative precision w/ supremum norm is: 0.000162
+
+
+x_(45):
+2.095648			4.097830			6.079403
+
+relative precision w/ supremum norm is: 0.000072
+
+
+[STOPPING]
+Relative precision of 0.000100 has been reached.
+Omega == 0.3

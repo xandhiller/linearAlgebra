@@ -15,7 +15,7 @@
 #include <math.h>
 
 #define INITIAL_GUESS   {0,0,0}
-#define ITERS           4
+#define ITERS           100
 
 
 float* copyMat(float* val, float* store);
