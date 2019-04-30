@@ -19,10 +19,10 @@ enum {CONTINUE, STOP};
 
 /* Params for tuning the approximation */
 #define INITIAL_GUESS   {0,0,0}     /* Initial guess for all methods for x0 */
-#define ITERS           4        /* Number of maximum iterations */
+#define ITERS           1000        /* Number of maximum iterations */
 #define OMEGA           0.5         /* Value of relaxation parameter */
-#define EPSILON         0.000001      /* Precision to stop at */
-#define METHOD          GAUSS_SIEDEL   /* Changed according to method desired */
+#define EPSILON         0.0001      /* Precision to stop at */
+#define METHOD          JACOBI   /* Changed according to method desired */
 
 
 float* copyMat(float* val, float* store);
@@ -36,8 +36,8 @@ main (int argc, char *argv[]) {
     float x_k[3]   = INITIAL_GUESS;
     float x_km1[3] = INITIAL_GUESS;
 
-    float A[3][3] = {{10,-1,0},{-1,10,-2},{0,-2,10}};     
-    float b[3] = {9, 7, 6};
+    float A[3][3] = {{1,0,1},{1,2,-1},{2,1,3}};     
+    float b[3] = {-4, 4, 18};
     
     int iter; /* Iteration number */
     int i; 
