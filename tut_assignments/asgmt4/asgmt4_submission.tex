@@ -20,6 +20,7 @@
 \titleformat{\section}{\huge \bfseries}{}{0em}{}[]
 \titleformat{\subsection}{\Large \bfseries}{}{0em}{}
 \titleformat{\subsubsection}{\bfseries}{}{0em}{}
+\nonstopmode
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -28,6 +29,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Question 1}
+
 \[
     \mathbf{a_1} = 
     \begin{bmatrix}
@@ -46,7 +48,7 @@
     \mathbf{b_1} = 
     \begin{bmatrix}
         1 \\
-        2 \\
+        3 \\
     \end{bmatrix}
     \quad 
     \mathbf{b_2} = 
@@ -60,7 +62,7 @@
         -1 \\
         1 \\
     \end{bmatrix}
-\]
+.\]
 
 
 Calculations:
@@ -97,7 +99,7 @@ Calculations:
     2 \mathbf{b_3} 
     =     
     \begin{bmatrix}
-        1 \\ 2 \\
+        1 \\ 3 \\
     \end{bmatrix}
     +
     2
@@ -106,7 +108,7 @@ Calculations:
     \end{bmatrix}
     =
     \begin{bmatrix}
-        1 \\ 2 \\
+        1 \\ 3 \\
     \end{bmatrix}
     +
     \begin{bmatrix}
@@ -114,16 +116,16 @@ Calculations:
     \end{bmatrix}
     =
     \begin{bmatrix}
-        -1 \\ 4 \\
+        -1 \\ 5 \\
     \end{bmatrix}
 \]
 
 
 \[
-(\mathbf{a_2} +
-3 \mathbf{b_2}  )
-\ \text{is undefined}
-\]
+    (\mathbf{a_2} +
+    3 \mathbf{b_2}  )
+    \ \text{is undefined}
+.\]
 
 
 \[
@@ -133,7 +135,7 @@ Calculations:
     \mathbf{b_3} 
     \ = \
     \begin{bmatrix}
-        1 \\ 2 \\
+        1 \\ 3 \\
     \end{bmatrix}
     +
     \begin{bmatrix}
@@ -146,7 +148,7 @@ Calculations:
     \end{bmatrix}
     \ = \
     \begin{bmatrix}
-        3 \\ 2 \\
+        3 \\ 3 \\
     \end{bmatrix}
     -
     \begin{bmatrix}
@@ -154,9 +156,10 @@ Calculations:
     \end{bmatrix}
     \ = \
     \begin{bmatrix}
-        6 \\ -1 \\
+        6 \\ 0 \\
     \end{bmatrix}
 \]
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -444,7 +447,7 @@ Hence the solution set is:
 
 \[
     \text{Span} \
-    \bigg\{ 
+    \left\{ 
     \begin{bmatrix}
         1 \\ -5 \\ 1 \\ 0 \\
     \end{bmatrix}
@@ -452,7 +455,7 @@ Hence the solution set is:
     \begin{bmatrix}
         -2 \\ 1 \\ 0 \\ 1 \\
     \end{bmatrix}
-    \bigg\}
+    \right\}
 .\]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -505,7 +508,7 @@ Therefore:
 
 \[
     \text{Free variable} = \{ x_4 \}
-.\]
+\]%
 
 
 \[
@@ -528,10 +531,24 @@ Therefore:
     \begin{bmatrix}
         4 \\ -2 \\ 1 \\ 0 \\
     \end{bmatrix}
-.\]
+\]%
 
-Hence the solutions lie on a line (?) in 4D space.
+Hence the solution set is:
 
+\[
+    \left\{
+    n
+    \begin{bmatrix}
+        1 \\ 0 \\ -1 \\ 1 \\ 
+    \end{bmatrix}
+    + 
+    \begin{bmatrix}
+        4 \\ -2 \\ 1 \\ 0 \\
+    \end{bmatrix}
+    ,
+    \ \forall   \ n \in \R
+    \right\}
+\]%
 
 
 

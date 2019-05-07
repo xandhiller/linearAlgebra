@@ -1,0 +1,109 @@
+\documentclass{article}
+\author{Alex Hiller}
+\title{}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=0.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}               % \mapsfrom arrow. 
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section{Linear Independence} 
+\subsection{Theorem} 
+Any set $\{ v_1,v_2,\ldots,v_{p}  \} \in \R^{n} $ is linearly independent if $p>n$.
+
+\section{Subspace}
+\[
+    H \text{ is a subspace of } V
+\]%
+Then:
+
+$H$ contains the zero vector of $V$
+
+$\ldots$  
+
+\section{Subspaces spanned by a Set} 
+\[
+    \{ v_{1} , v_{2} , \ldots v_{n} \}  \in V \Rightarrow \text{Span} \{ v_{1} , v_{2} , \ldots v_{n} \}
+    \text{ is a subspace of } V
+\]%
+
+
+\section{Linearly Independent Sets} 
+There is no scalar such that:
+\[
+    \cos( t ) = c \sin( t ) 
+\]%
+This leads to:
+\[
+    \frac{1}{\tan (t) } = c
+\]%
+You can solve for a particular $t$  value, but not a scalar.
+
+Because of this we can conclude that $ \cos( t )  $  is not a scalar multiple of
+$ \sin( t)  $ and hence they are not linearly related.
+
+
+\section{Basis} 
+Let $ H $  be a subspace of $ V $. \\
+You have an indexed set $ \mathbf{B} $.
+\[
+    \mathbf{B} = \{ b_1,b_2,\ldots,b_{n}  \} 
+\]%
+If 
+\[
+    \mathbf{B} \in V
+\]%
+And $ \mathbf{B} $  is linearly independent, and:
+\[
+    H = \text{Span} \{ b_1,b_2,\ldots,b_{n}  \} 
+\]%
+Then $ \mathbf{B} $  is a basis in $ H $.
+
+
+Note that if $ H = V $  this still applies, as all vector spaces are a subspace
+of themselves.
+
+\clearpage
+
+\section{Basis Examples} 
+A vector space can have multiple basis vectors, though they all have the same
+number of components -- this number is called the dimension.
+
+If you remove one vector from the basis, the space will not be fully spanned, if
+you add an extra vector in then you lose linear independence.
+
+\section{Why Impose a Basis} 
+You may need a coordinate system for your vector space.
+\qanda{What are the axioms of a vector space?}{}
+
+\section{Proof of the Unique Representation Theorem} 
+Is done by a proof-by-contradiction.
+
+You make an opposite assumption and arrive at a contradiction $ \Rightarrow  $
+opposite must be true.
+
+\qanda{Does a proof by contradiction require that there only be two options to
+assume from? Or does a proof by contradiction just lead to an exclusion of the
+assumed case?}{} 
+
+
+
+\end{document}

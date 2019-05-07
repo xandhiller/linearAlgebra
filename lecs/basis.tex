@@ -1,0 +1,311 @@
+\documentclass{article}
+\author{Alex Hiller}
+\title{}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}               % \mapsfrom arrow. 
+\usepackage{svg}
+\setsvg{inkscape=inkscape -z -D}
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section{Linear Dependence} 
+Method:
+
+\[%
+    \text{ref} \left(\mathbf{A}\right) = 
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+		0 & a_{22} & a_{23} \\
+		0 & 0 & a_{33} \\		
+    \end{bmatrix}
+    \Rightarrow 
+    \text{Number of pivots?}
+\]%
+
+You then use the number of pivots to determine whether you have any free
+variables. If you do, that means one (or more) of the variables can be expressed
+in terms of the other --  which is the definition of dependence, is it not?
+
+\section{Linear Independence Theorem} 
+A set of vectors in dependent iff one (or more) of the vectors in the set can be
+expressed as a linear combination of the others.
+
+
+\section{Dimension and Linear Dependence} 
+If you take $ n $  vectors with $ p $  entries, then if $ p > n $  you have to
+have linear dependence.
+
+
+\subsection{$ p>n \Rightarrow $ Linear Dependence} 
+
+Example:
+
+Take an arbitraty matrix where rows/entries (n) $ > $ columns/vectors (p):
+\[%
+    \text{dim} \left(\mathbf{A}\right) = (3,4) = \text{3 rows $ \times $ 4 columns} 
+    \quad
+\]%
+
+
+\[%
+    \mathbf{A} = 
+    \begin{bmatrix}
+        * & * & * & * & * \\
+        * & * & * & * & * \\
+        * & * & * & * & * \\
+        * & * & * & * & * \\
+    \end{bmatrix}
+    \quad
+    \text{rref} (\mathbf{A}) 
+    \begin{bmatrix}
+        1 & * & * & * & * \\
+        0 & 1 & * & * & * \\
+        0 & 0 & 0 & 1 & * \\
+        0 & 0 & 0 & 0 & 1 \\
+    \end{bmatrix}
+\]%
+
+Here we can see that we can only have 3 pivots, we're going to get 3 basic
+variables and 2 free variables. Having 2 free variables means that we can
+'freely' express our variables in terms of others --  a dependence.
+
+\subsection{$ p<n \Rightarrow $ Not Enough Information to Solve for $ \mathbf{x} $} 
+
+If the number of vectors is less than the number of entries in those vectors,
+then that means we're dealing with a set of vectors contained in the vector
+space $ \R^{n}$ then we need at least $ n $ vectors to span that vector space,
+but $ p $, our number of vectors, is less than that, and so we do not have
+enough information if we, say, wanted to solve for a point in $ \R^{n}$ space.
+We would need more vectors!
+
+\[%
+    \mathbf{A} = 
+    \begin{bmatrix}
+        * & * & * \\
+		* & * & * \\
+		* & * & * \\		
+        * & * & * \\
+		* & * & * \\
+    \end{bmatrix}
+    \quad
+    \text{rref} \left(\mathbf{A}\right) = 
+    \begin{bmatrix}
+        1 & * & * \\
+		0 & 1 & * \\
+		0 & 0 & 0 \\		
+        0 & 0 & 1 \\
+		0 & 0 & 0 \\
+    \end{bmatrix}
+\]%
+
+\section{Axioms of a Vector Space} 
+
+\subsubsection{The addition of two vectors is contained in the vector space} 
+\[%
+    \left(\mathbf{u}+\mathbf{v}\right) \in V
+\]%
+\subsubsection{Addition is commutative}
+\[%
+    \mathbf{u}+ \mathbf{v}=\mathbf{v}+ \mathbf{u}
+\]%
+\subsubsection{Addition is associative} 
+\[%
+    \left(\mathbf{u}+ \mathbf{v}\right)+\mathbf{w} = \mathbf{u}+
+    \left(\mathbf{v}+\mathbf{w}\right)
+\]%
+\subsubsection{There exists a null vector} 
+\[%
+    \exists \ \mathbf{0} \rightarrow \mathbf{u}+ \mathbf{0} = \mathbf{u}
+\]%
+\subsubsection{A scalar multiple of a vector is in the subspace} 
+\[%
+    c \ \mathbf{v} \in V
+\]%
+\subsubsection{Distributive law of scalar multiplication} 
+\[%
+    c \left(\mathbf{u}+ \mathbf{v}\right) = c \ \mathbf{u}+ c \ \mathbf{v}
+\]%
+\subsubsection{Distributive law of vectors} 
+\[%
+    (c+d) \mathbf{u} = c \ \mathbf{u} + d \ \mathbf{u}
+\]%
+\subsubsection{Associative law scalar multiplication of vectors} 
+\[%
+    c \left(d \ \mathbf{u}\right) = \left(cd\right) \mathbf{u}
+\]%
+\subsubsection{Unity operation} 
+\[%
+    1(\mathbf{u}) = \mathbf{u}, \quad (-1)\mathbf{u}=-\mathbf{u}
+\]%
+\subsection{Must Hold For:} 
+\[%
+    \mathbf{u}, \mathbf{v} \in V \qquad c,d \in \R
+\]%
+
+\clearpage
+\section{Subspaces} 
+
+Is a subset of vectors that have the following properties:
+
+\subsubsection{Contains the zero vector of $ V $} 
+\[%
+    0 \in V \Rightarrow \mathbf{0} \in H \qquad \text{if } H \text{ is a subspace}
+\]%
+\subsubsection{Is closed under vector addition} 
+\[%
+    \mathbf{u}, \mathbf{v} \in H \Rightarrow \mathbf{u}+ \mathbf{v} \in H
+\]%
+\subsubsection{Closed under scalar multiplication} 
+\[%
+    \{ c \ \mathbf{u} \in H | \mathbf{u} \in H, c \in \R \}
+\]%
+
+\subsection{Examples of Things that are not Subspaces} 
+A plane that does not contain (0,0,0) in $ \R^{3} $ is not a subspace because 
+it does not contain the $ \mathbf{0} $ vector.
+
+A line that does not intersect the origin in $ \R^{2} $ is not a subspace, 
+because it does not contain the zero vector of $ \R^{2} $. 
+
+%
+\qanda
+{But so what if the plane does contain the point (0,0,0)? Or the line (0,0)? Why should that disqualify it as a subspace?}
+{} 
+%
+
+\[%
+    \R^{2} \text{ is not a subspace of } \R^{3}
+\]%
+Because $ \begin{bmatrix} 0, 0, 0 \end{bmatrix} \notin \R^{2}$, hence violating
+the requirements of a subspace.
+
+\subsection{Forming a Subspace with Span} 
+\[%
+    \{ v_1,v_2, \ \ldots \ , v_{n}  \} \in V \Rightarrow  \text{Span}\ \{ v_1,
+    v_2, \ \ldots \ , v_{n}  \}
+\]%
+
+\subsection{A Vector Space is a Subspace of Itself} 
+\[%
+    V \subset V \Rightarrow \text{ V is a subspace of itself. } 
+\]%
+
+\clearpage 
+
+\section{Basis} 
+
+\subsection{Definition:} 
+Let: $ H $ be a subspace of $ V $
+
+Let: $ B $ be an indexed set.
+
+If: $ B $ is linearly independent,
+
+and if: $ H = \text{Span} \{ B \}$
+
+Then: $ B $ is a basis of $ H $
+
+\subsection{More Briefly} 
+A basis is a linearly independent set that spans V.
+
+\subsection{Converting Between Coordinate Systems} 
+You may have multiple basis' in a coordinate system. You may want to convert
+between them.
+
+Converting from one to another can be written as: 
+\[%
+    \mathbf{x} \mapsto \left[ \mathbf{x} \right]_{B} 
+\]%
+
+If you have a basis s.t.
+\[%
+    \mathbf{B} = \left\{ \mathbf{b_1}, \ldots , \mathbf{b_{n}}  \right\}
+\]%
+We can redefine $ \mathbf{B} $ to be:
+\[%
+    \mathbf{B} = 
+    \begin{bmatrix}
+        \mathbf{b}_{1} \ \ldots \ \mathbf{b}_{n}
+    \end{bmatrix}
+\]%
+Where the vectors in the indexed set become the columns of $ \mathbf{B} $.
+
+Recalling the \textit{Unique Representation Theorem}:
+$ \text{if } \mathbf{B} \iff \text{basis of } \mathbf{V} $ then:
+\[%
+    \forall \mathbf{x} \in \mathbf{V} \ \exists \ \mathbf{x}= x_1 \mathbf{b_1}
+    +  \ \ldots \ + x_{n} \mathbf{b_{n} }
+\]%
+Such that:
+\[%
+    \left\{ x_1, \ \ldots \ , x_{n} \right\} \equiv \text{A unique set of
+    scalars.} 
+\]%
+i.e. there is only one solution.
+\vspace{1cm}
+
+Then $ \mathbf{x} $ is expressed as $ \left[ \mathbf{x} \right]_{B}  $ via the
+equation:
+
+\[%
+    \mathbf{x} =  \mathbf{B}\left[ \mathbf{x} \right]_{B}
+\]%
+It then follows that:
+\[%
+    \left[ \mathbf{x} \right]_{B} = \mathbf{B}^{-1}\mathbf{x}
+\]%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\clearpage
+--
+\end{document}
+
