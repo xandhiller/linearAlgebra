@@ -1,0 +1,90 @@
+\documentclass{article}
+\author{Alex Hiller}
+\title{}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}               % \mapsfrom arrow. 
+\usepackage{svg}
+\setsvg{inkscape=inkscape -z -D}
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+%%% Old idea. %%%%%
+\section{2D Geometry} 
+The way in which we describe  $ 2D $ Geometry is dependent on something called
+homogenous coordinates.
+
+You can describe homogeneous coordinates with:
+\[%
+    \mathbf{x} = 
+    \begin{bmatrix}
+        x \\		
+        y \\
+        1 \\
+    \end{bmatrix}
+\]%
+
+Expressing a conic as a symmetric matrix: $ \mathbf{A}_{Q} $  is defined as the
+matrix required for this expression:
+
+\[%
+    \mathbf{x}^{T}\mathbf{A}_{Q} \ \mathbf{x} = 0
+\]%
+Where:
+
+\[%
+    \mathbf{A_{Q} }
+    = 
+    \begin{bmatrix}\vspace{2mm}
+        A            & \frac{B}{2}  & \frac{D}{2}  \\ \vspace{2mm}
+        \frac{B}{2}  & C            & \frac{E}{2}  \\
+        \frac{D}{2}  & \frac{E}{2}  & F \\		
+    \end{bmatrix}
+\]%
+
+Hence the conic is produced by:
+
+\[%
+    \begin{bmatrix}
+        x & y & 1 \\
+    \end{bmatrix}
+    \begin{bmatrix}\vspace{2mm}
+        A            & \frac{B}{2}  & \frac{D}{2}  \\ \vspace{2mm}
+        \frac{B}{2}  & C            & \frac{E}{2}  \\
+        \frac{D}{2}  & \frac{E}{2}  & F \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\		y \\
+        1 \\
+    \end{bmatrix}
+    = 0
+\]%
+
+Which expands to:
+
+\[%
+    Ax^{2}+Bxy+Cy^{2}+Dx+Ey+F = 0
+\]%
+
+\end{document}
+

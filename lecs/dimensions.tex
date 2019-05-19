@@ -1,0 +1,96 @@
+\documentclass{article}
+\author{Alex Hiller}
+\title{}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}     % \mapsfrom arrow. 
+\usepackage{mathtools}    % \coloneqq
+\usepackage{svg}
+\setsvg{inkscape=inkscape -z -D}
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section{Dimensions} 
+\subsection{Standard Unit Vectors} 
+Standard unit vectors for $ \R^{3} $ :
+\[%
+    \mathbf{e}_{1} 
+    =
+    \begin{bmatrix}
+        1 \\ 0 \\ 0 \\
+    \end{bmatrix}
+    \quad
+    \mathbf{e}_{2} 
+    =
+    \begin{bmatrix}
+        0 \\ 1 \\ 0 \\
+    \end{bmatrix}
+    \quad
+    \mathbf{e}_{3} 
+    =
+    \begin{bmatrix}
+        0 \\ 0 \\ 1 \\
+    \end{bmatrix}
+\]%
+The pattern continues for $ n $-dimensional space.
+
+\subsection{Standard Matrix of $ \mathcal{T} $} 
+$ \mathbf{x} \in \R^{2} $ 
+
+Because of linearity:
+\[%
+    \mathcal{T}(\mathbf{x}) 
+    =
+    \mathcal{T}(x_1 \mathbf{e}_{1} )
+    + 
+    \mathcal{T}(x_2 \mathbf{e}_{2} )
+    = 
+    x_1 \mathcal{T}(\mathbf{e}_{1} ) + x_2 \mathcal{T}(\mathbf{e}_{2} )
+\]%
+Then we define:
+\[%
+    \mathbf{x} 
+    =
+    \begin{bmatrix}
+        x_1 \\
+		x_2 \\		
+    \end{bmatrix}
+\]%
+and
+\[%
+    \mathbf{T}
+    =
+    \begin{bmatrix} \
+        \mathcal{T}(\mathbf{e}_{1} ) \ | \
+        \mathcal{T}(\mathbf{e}_{2} ) \
+    \end{bmatrix}
+\]%
+\subsubsection{Key point:} 
+This allows us to take a vector mapping function ($ \mathcal{T}(\mathbf{x}) $)
+and turn it into a matrix equation:
+\[%
+    \mathcal{T}(\mathbf{x})
+    =
+    \mathbf{T} \mathbf{x}
+\]%
+
+\end{document}
+

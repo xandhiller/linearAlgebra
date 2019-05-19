@@ -1,6 +1,6 @@
 \documentclass{article}
 \author{Alex Hiller (11850637)}
-\title{Linear Algebra, Written Assignment, Autumn 2019}
+\title{Linear Deformation of Images}
 % Type-setting
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.125cm}
@@ -26,62 +26,388 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\section{2D Geometry} 
-The way in which we describe  $ 2D $ Geometry is dependent on something called
-homogenous coordinates.
+\maketitle
+\vspace{20mm}
+\begin{center} {Linear Algebra (37233)\\ Written Assignment\\ Autumn 2019} \end{center}
+\clearpage
 
-You can describe homogeneous coordinates with:
-\[%
-    \mathbf{x} = 
+The transformation of images is an image processing technique embedded in the
+foundations of linear algebra and forms the bedrock of image editing on
+computers and mobiles. It takes the pixels of one image and maps their
+pixels to new coordinates on a new image.
+
+Examples of this are shrinking, reflection, dilating, stretching, displacing and
+shearing of an image. For a linear transformation, any of these may also be done
+in succession.
+
+To imagine how this is done, we must first lay some mental ideas of how we will
+treat pictures. It is pertinent to recall that pictures consist of small squares
+called pixels, these elementary units are uniformly coloured and each makes
+up a very small part of the image. 
+
+For example, a common image size used is $ 1920 \times 1080 $ which is a 
+shorthand for saying 2073600 individual pixels. In an image of this size we have
+one pixel making up less than two-millionths of the whole.
+A digital image is in fact a grid of squares, each with a single 
+colour, where that colour is encoded by a number (or array of numbers in 
+the case of colour images), and laid out in a 2D coordinate system.
+
+\subsubsection{Simplifying Assumptions} 
+
+We will limit this small analysis to black and white pictures, as colour pictures
+begin to provide the complexities of 3D arrays that are not relevant to an 
+introductory survey of linear transformations of images.
+
+Furthermore, when we examine the transformations more closely it will be assumed
+that all images lay in a plane with their lower left corner at the origin as 
+is depicted below:
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.4\textwidth]{normal} % No file extension.
+    \caption{Reference image that will be used for transformations.}
+\end{figure}
+
+\subsubsection{Mental Model} 
+
+A black-and-white picture is also two-dimensional, meaning that we can organise its 
+pixels in an identical fashion to how a matrix is organised.
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.3\textwidth]{grid} % No file extension.
+    \caption{An example of how an image may be laid out in a matrix style
+    fashion. Circles here would represent values ranging from 0 (black) to 255
+    (white).}
+    \label{grid}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.5\textwidth]{pixels} % No file extension.
+    \caption{A closer look at how the coordinate system works for the pixels of
+    an image.}
+    \label{pixels}
+\end{figure}
+
+
+
+In Fig. \ref{pixels}, pixels have been labelled with $ (x_n, y_n)  $ indicating
+their coordinates. The $ x $-axis indicating columns and the $ y $-axis the
+rows. It's important to note that this is a pixel-by-pixel method of transforming
+images, which is why these coordinates are integral to the method used below:
+
+\begin{equation}
     \begin{bmatrix}
-        x \\		
+        a & b & c \\
+		d & e & f \\
+		0 & 0 & 1 \\	
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_n  \\
+		y_n  \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        ax_n  + by_n + c \\
+		dx_n + ey_n  + f \\
+		1 \\		    
+    \end{bmatrix}
+    \label{svg}
+\end{equation}
+
+We can condense this further to: 
+
+\[%
+    \mathbf{A} \mathbf{x} = \mathbf{x}'
+\]%
+
+Where $ \mathbf{A} $ is the linear transformation matrix, $ \mathbf{x} $ is our
+current pixel coordinate and $ \mathbf{x}' $ is the new coordinate of our pixel.
+
+
+
+Let us more closely examine $ \mathbf{A} $.
+
+\[%
+    \begin{bmatrix}
+        a & b & c \\
+		d & e & f \\
+		0 & 0 & 1 \\	
+    \end{bmatrix}
+\]%
+
+$ a,\ b, \ c, \ d, \ e \text{ and }f$ all correspond to different parameters that
+affect the image.  The variables $ a \text{ and } e $ are used to scale, magnify 
+or invert. The coefficients $ b $ and  $ d $ are to distort/warp, and $ c $ and 
+$ f $ to displace the whole image around the coordinate system.
+
+Let's have a closer look at how this matrix can be used to alter images.
+
+\subsection{Dilation/Magnification} 
+
+Setting $ a $ and $ e $ equal to a constant ($ \delta $) allows us to stretch the image.
+
+\[%
+    \begin{bmatrix} 
+        \delta & 0 & 0 \\
+		0 & \delta & 0 \\
+		0 & 0 & 1 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
         y \\
-		1 \\
+		1 \\		
     \end{bmatrix}
+    =
+    \begin{bmatrix} \delta \cdot x \\ \delta \cdot y \\ 1 \end{bmatrix}
 \]%
 
-Expressing a conic as a symmetric matrix: $ \mathbf{A}_{Q} $  is defined as the
-matrix required for this expression:
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.3\textwidth]{dilation} % No file extension.
+\end{figure}
+
+
+\clearpage
+\subsection{Reflection} 
+If we then set $ a $ to $-1$ and $ e $ to 1, it will reflect the image over 
+the x-axis. The conjugate operations would cause a reflection over the y-axis.
 
 \[%
-    \mathbf{x}^{T}\mathbf{A}_{Q} \ \mathbf{x} = 0
-\]%
-Where:
-
-\[%
-    \mathbf{A_{Q} }
-    = 
-    \begin{bmatrix}\vspace{2mm}
-        A            & \frac{B}{2}  & \frac{D}{2}  \\ \vspace{2mm}
-		\frac{B}{2}  & C            & \frac{E}{2}  \\
-		\frac{D}{2}  & \frac{E}{2}  & F \\		
-    \end{bmatrix}
-\]%
-
-Hence the conic is produced by:
-
-\[%
-    \begin{bmatrix}
-        x & y & 1 \\
-    \end{bmatrix}
-    \begin{bmatrix}\vspace{2mm}
-        A            & \frac{B}{2}  & \frac{D}{2}  \\ \vspace{2mm}
-		\frac{B}{2}  & C            & \frac{E}{2}  \\
-		\frac{D}{2}  & \frac{E}{2}  & F \\		
+    \begin{bmatrix} 
+        -1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\		
     \end{bmatrix}
     \begin{bmatrix}
-        x \\		y \\
-		1 \\
+        x \\
+        y \\
+		1 \\		
     \end{bmatrix}
-    = 0
+    =
+    \begin{bmatrix} - x \\  y \\ 1 \end{bmatrix}
+    \quad
+    \text{or}
+    \quad
+    \begin{bmatrix} 
+        1 & 0 & 0 \\
+		0 & -1 & 0 \\
+		0 & 0 & 1 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        y \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} x \\ -y \\ 1 \end{bmatrix}
 \]%
 
-Which expands to:
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.3\textwidth]{reflection} % No file extension.
+\end{figure}
+
+
+\subsection{Shrinking/Compression} 
+
+In a similar manner to dilation we can produce a shrinking effect if we make the
+coefficient smaller than one.
 
 \[%
-    Ax^{2}+Bxy+Cy^{2}+Dx+Ey+F = 0
+    \begin{bmatrix} \vspace{1mm}
+        \ 1/f  & 0 & 0 \\ \vspace{1mm} 
+        0 & 1/f  & 0 \vspace{1mm}  \ \\ 
+	    \ 0 & 0 & 1 \\		     
+    \end{bmatrix}
+    \begin{bmatrix} x\\y\\1 \end{bmatrix}
+    =
+    \begin{bmatrix}
+        {x}/{f}  \\
+        {y}/{f}  \\
+		1 \\		
+    \end{bmatrix}
 \]%
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.3\textwidth]{shrinking} % No file extension.
+    % \caption{}
+\end{figure}
+
+
+\clearpage
+\subsection{Stretching} 
+
+If we take our dilation and apply it only to one coordinate, we can stretch just
+one dimension of our object.
+
+\[%
+       \begin{bmatrix} 
+        \sigma & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        y \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} \sigma x \\  y \\ 1 \end{bmatrix}
+    \quad
+    \text{or}
+    \quad
+    \begin{bmatrix} 
+        1 & 0 & 0 \\
+		0 & \sigma & 0 \\
+		0 & 0 & 1 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        y \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} x \\ \sigma y \\ 1 \end{bmatrix}\]%
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.37\textwidth]{stretching_x} % No file extension.
+    \includesvg[width=0.3\textwidth]{stretching_y} % No file extension.
+    % \caption{}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    % \caption{}
+\end{figure}
+
+\subsection{Shearing/Warping} 
+We're yet to use our coefficients $ b $ and $ d $, which is because they begin
+to create distortions of our images which are less intuitive.
+
+\[%
+    \begin{bmatrix} 
+        1 & \gamma & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        y \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        x + \gamma y \\
+        y \\
+		1 \\		
+    \end{bmatrix}
+    \quad
+    \text{ or }
+    \quad
+    \begin{bmatrix} 
+        1 & 0 & 0 \\
+		\gamma & 1 & 0 \\
+		0 & 0 & 1 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        y \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        x \\
+        y + \gamma x \\
+		1 \\		
+    \end{bmatrix}
+\]%
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.3\textwidth]{shearing_x} % No file extension.
+    \includesvg[width=0.3\textwidth]{shearing_y} % No file extension.
+\end{figure}
+
+\clearpage
+\subsection{Translation} 
+
+The image can also be moved around the plane/canvas with the $ c $ and $ f $
+coefficients.
+
+\[%
+    \begin{bmatrix} 
+        1 & 0 & \Delta {x} \\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        y \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} x + \Delta {x} \\  y \\ 1 \end{bmatrix}
+    \quad
+    \text{or}
+    \quad
+    \begin{bmatrix} 
+        1 & 0 & 0 \\
+		0 & 1 & \Delta {y} \\
+		0 & 0 & 1 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        y \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} x \\ y + \Delta {y} \\ 1 \end{bmatrix}
+\]%
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.3\textwidth]{translation} % No file extension.
+    % \caption{}
+\end{figure}
+
+\section{Impact} 
+
+The matrix format listed in Eq. \ref{svg} is that specified by the CSS standard
+for the manipulation of scaleable vector graphics (SVG) files on the web.
+Linear transformations like these are the core of programs like
+\textit{Inkscape} (similar to Adobe Illustrator), which aims to allow people to 
+create illustrations for free. \textit{Inkscape} in fact has a transformation
+tool that uses these coefficients to transform the image.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.3\textwidth]{inkscape}
+    \caption{The \textit{Inkscape} matrix transformation tool.}
+\end{figure}
+    
+
+--
+
+
+\clearpage
+\section{References} 
+
+https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
+
+https://www.w3.org/standards/webdesign/htmlcss
+
+https://inkscape.org/about/
+
+https://pillow.readthedocs.io/en/stable/reference/PixelAccess.html
 
 
 
 \end{document}
+
+
+

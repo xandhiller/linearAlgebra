@@ -1,0 +1,705 @@
+\documentclass{article}
+\author{Alex Hiller (11850637)}
+\title{Linear Algebra, Assignment 6}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}               % \mapsfrom arrow. 
+\usepackage{svg}
+\usepackage{mathtools}
+\setsvg{inkscape=inkscape -z -D}
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\clearpage
+\section{Question 1} 
+\subsection{Part (a)} 
+If we define $ \mathbf{x} $ as the unit square, $ \mathbf{y} $ as the
+image of $ \mathbf{x} $ and coordinates to be given as: $ \begin{bmatrix}
+    x-\text{coordinate} \\y-\text{coordinate}\\
+\end{bmatrix} $ then the mapping is doing the following:
+
+\[%
+    \mathbf{x} \coloneqq \left\{ 
+    \begin{bmatrix}
+        0 \\ 0 \\
+    \end{bmatrix}
+    ,
+    \begin{bmatrix}
+        0\\1\\
+    \end{bmatrix}
+    ,
+    \begin{bmatrix}
+        1\\1\\
+    \end{bmatrix}  
+    ,
+    \begin{bmatrix}
+        1\\0\\
+    \end{bmatrix}
+    \right\}
+    
+\]%
+
+\[%
+    \mathcal{T} (\mathbf{x})= \mathbf{y}
+\]%
+
+\[%
+    \mathbf{y} \coloneqq  \left\{ 
+    \begin{bmatrix}
+        0 \\ 0 \\
+    \end{bmatrix}
+    ,
+    \begin{bmatrix}
+        -1\\2\\
+    \end{bmatrix}
+    ,
+    \begin{bmatrix}
+        -3\\3\\
+    \end{bmatrix}  
+    ,
+    \begin{bmatrix}
+        -2\\1\\
+    \end{bmatrix}
+    \right\}
+\]%
+
+We know that a transformation of $ \mathcal{T}  $ can be expressed as a matrix
+by:
+\[%
+    \mathbf{T}=
+    \begin{bmatrix}
+        \mathcal{T}(\mathbf{e_{1}})  \ | \ \mathcal{T} (\mathbf{e_{2}})
+    \end{bmatrix}
+\]%
+
+Fortunately, we have these given to us in our question:
+\[%
+    \mathbf{T} =
+    \begin{bmatrix}
+        \mathcal{T}\left(\begin{bmatrix} 1 \\ 0 \\ \end{bmatrix}\right) \ \bigg| \ 
+        \mathcal{T}\left(\begin{bmatrix} 0\\1\\ \end{bmatrix}\right)
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -2 & -1 \\
+		1 &  2  \\		
+    \end{bmatrix}
+\]%
+
+\subsection{Part (b)} 
+Verifying the image of the top right corner:
+\[%
+    \mathbf{T}
+    \begin{bmatrix}
+        1\\1\\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -2 & -1 \\
+		1 &  2  \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        1\\1\\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -3\\3\\
+    \end{bmatrix}   
+\]%
+Which is as expected.
+
+Please turn over for parts (c) and (d).
+
+\clearpage
+\subsection{Part (c) and (d)} 
+Now we are to apply the transformation to $ \mathbf{T}\mathbf{x} $, (note that
+$ \mathbf{T}\mathbf{x} $ is the image of $ \mathbf{x} $ ) leading to:
+\[%
+    \mathbf{T}\mathbf{T}\mathbf{x}
+    =
+    \begin{bmatrix}
+        -2 & -1 \\
+		1 &  2  \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        -2 & -1 \\
+		1 &  2  \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        1\\1\\
+    \end{bmatrix}
+\]%
+
+\[%
+    \mathbf{T}^{2} 
+    =
+    \begin{bmatrix}
+        3 & 0 \\
+        0 & 3 \\
+    \end{bmatrix}
+\]%
+
+This is a dilation, a stretching of the original unit square to three times its
+dimension, depicted below.
+
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.2\textwidth]{dilation} % Requires no file extension.
+    \caption{A dilation of the unit square by a factor of 3, using $
+    \mathbf{T}^{2}. $}
+\end{figure}
+
+\clearpage
+\section{Question 2} 
+\subsection{Part (a)} 
+If a $ 2 \times 2 $ matrix has two pivots, then it spans $ \R^{2} $.
+
+Putting
+\[%
+    \mathbf{P}_{\mathcal{B}} = 
+    \begin{bmatrix}
+        \mathbf{b}_{1} \ \mathbf{b}_{2} 
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -2 & 7 \\
+        1 & -2 \\
+    \end{bmatrix}
+\]%
+Then:
+\[%
+    \text{rref} (\mathbf{\mathbf{P}_{\mathcal{B}}}) 
+    =
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 \\
+    \end{bmatrix}
+\]%
+Showing us that $ \mathbf{P}_{\mathcal{B}} $ spans $ \R^{2} $.
+
+Similarly:
+\[%
+    \mathbf{P}_{\mathcal{C}} = 
+    \begin{bmatrix}
+        \mathbf{c}_{1} \ \mathbf{c}_{2} 
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -1 & 4 \\
+        -1 & 1 \\
+    \end{bmatrix}
+\]%
+Again:
+\[%
+    \text{rref} (\mathbf{\mathbf{P}_{\mathcal{C}}}) 
+    =
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 \\
+    \end{bmatrix}
+\]%
+$ \therefore $ The two bases span $ \R^{2} $.
+
+\subsection{Part (b)} 
+\[%
+    \mathbf{x}= \mathbf{P}_{\mathcal{B}}[\mathbf{x}]_{\mathcal{B}}
+    \quad
+    \Rightarrow 
+    \quad
+    [\mathbf{x}]_{\mathcal{B}} = \mathbf{P}_{\mathcal{B}}^{-1} \ \mathbf{x}
+\]%
+\[%
+    \mathbf{P}_{\mathcal{B}} 
+    = 
+    \begin{bmatrix}
+        -2 & 7 \\
+        1 & -2 \\
+    \end{bmatrix}
+    \quad
+    \Rightarrow 
+    \quad
+    \mathbf{P}_{\mathcal{B}}^{-1}
+    = 
+    \begin{bmatrix}
+        \ \frac{2}{3}  & \frac{7}{3} \ \vspace{2mm} \\ \vspace{2mm}
+		\ \frac{1}{3}  & \frac{2}{3} \  \\		
+    \end{bmatrix}
+\]%
+
+Consequently:
+\[%
+    \begin{bmatrix}
+        \ \frac{2}{3}  & \frac{7}{3} \ \vspace{2mm} \\ \vspace{2mm}
+		\ \frac{1}{3}  & \frac{2}{3} \  \\		
+    \end{bmatrix}
+    \begin{bmatrix} 1 \\ 1 \\ \end{bmatrix}
+    = 
+    [\mathbf{x}]_{\mathcal{B}}
+    =
+    \begin{bmatrix} 3 \\ 1 \\ \end{bmatrix}
+\]%
+
+\subsection{Part (c)} 
+
+
+We know that
+\[%
+    \mathbf{x}= \mathbf{P_{\mathcal{B}}}[\mathbf{x}]_{\mathcal{B}} 
+\]%
+And that
+\[%
+    \mathbf{x}= \mathbf{P_{\mathcal{C}}}[\mathbf{x}]_{\mathcal{C}} 
+\]%
+Hence
+\[%
+    \mathbf{P_{\mathcal{B}}}[\mathbf{x}]_{\mathcal{B}} 
+    =
+    \mathbf{P_{\mathcal{C}}}[\mathbf{x}]_{\mathcal{C}} 
+\]%
+
+\[%
+    [\mathbf{x}]_{\mathcal{B}} 
+    =
+    \mathbf{P_{\mathcal{B}}}^{-1}
+    \mathbf{P_{\mathcal{C}}} 
+    [\mathbf{x}]_{\mathcal{C}} 
+\]%
+
+\[%
+    \left(
+    \mathbf{P_{\mathcal{B}}}^{-1}
+    \mathbf{P_{\mathcal{C}}} 
+    \right)
+    [\mathbf{x}]_{\mathcal{C}} 
+    = 
+    \mathbf{P}_{\mathcal{B}\mapsfrom \mathcal{C}}
+    [\mathbf{x}]_{\mathcal{C}} 
+\]%
+
+So we have in conclusion:
+
+\[%
+    [\mathbf{x}]_{\mathcal{B}}
+    =
+    \mathbf{P}_{\mathcal{B}\mapsfrom \mathcal{C}} [\mathbf{x}]_{\mathcal{C}} 
+\]%
+
+Where $ \mathbf{P}_{\mathcal{B}\mapsfrom \mathcal{C}} $ is a matrix that maps
+from basis $ \mathcal{C} $ to basis $ \mathcal{B} $.
+
+We of course want the exact inverse of that mapping:
+
+\[%
+    (\mathbf{P}_{\mathcal{B}\mapsfrom \mathcal{C}})^{-1}
+    = 
+    \mathbf{P}_{\mathcal{C}\mapsfrom \mathcal{B}}
+    = 
+    \left( \mathbf{P_{\mathcal{C}}}^{-1} \mathbf{P_{\mathcal{B}}} \right)
+\]%
+
+Another thing we know is that:
+
+\[%
+    \mathbf{P}_{\mathcal{B}} 
+    = 
+    \begin{bmatrix} \mathbf{b}_{1} \ \mathbf{b}_{2} \\ \end{bmatrix}
+    =
+    \begin{bmatrix} -2 & 7 \\ 1 & -2 \\ \end{bmatrix}
+\]%
+
+\[%
+    \mathbf{P}_{\mathcal{C}} 
+    = 
+    \begin{bmatrix} \mathbf{c}_{1} \ \mathbf{c}_{2} \\ \end{bmatrix}
+    =
+    \begin{bmatrix} -1 & 4 \\ -1 & 1 \\ \end{bmatrix}
+\]%
+
+Hence:
+
+\[%
+    [\mathbf{x}]_{\mathcal{C}} = \mathbf{P}_{\mathcal{C}}^{-1}
+    \mathbf{P}_{\mathcal{B}} [\mathbf{x}]_{\mathcal{B}}
+\]%
+
+\[%
+    [\mathbf{x}_{\mathcal{C}}] = 
+    \begin{bmatrix} -1 & 4 \\ -1 & 1 \\\end{bmatrix}^{-1}
+    \begin{bmatrix} -2 & 7 \\ 1 & -2 \\ \end{bmatrix}
+    \begin{bmatrix} 3 \\ 1\\ \end{bmatrix}
+    =
+    \begin{bmatrix} -1 \\ 0 \\ \end{bmatrix}
+\]%
+
+
+\subsection{Part (d)} 
+Again:
+
+\[%
+    \mathbf{y} = \mathbf{P}_{\mathcal{C}}[\mathbf{y}]_{\mathcal{C}}
+\]%
+
+\[%
+    [\mathbf{y}]_{\mathcal{C}} = \mathbf{P}_{\mathcal{C}}^{-1}\mathbf{y}
+\]%
+
+\[%
+    [\mathbf{y}]_{\mathcal{C}} =
+    \begin{bmatrix}-1&4\\-1&1\end{bmatrix}^{-1}
+    \begin{bmatrix}5\\-1\end{bmatrix}
+    =
+    \begin{bmatrix}3\\2\end{bmatrix}
+\]%
+
+\subsection{Part (e)} 
+
+\[%
+    \mathbf{P}_{\mathcal{B}\mapsfrom \mathcal{C}}
+    =
+    \mathbf{P}_{\mathcal{B}}^{-1} \mathbf{P}_{\mathcal{C}}
+\]%
+
+\[%
+    [\mathbf{y}]_{\mathcal{B}} 
+    =
+    \mathbf{P}_{\mathcal{B}\mapsfrom \mathcal{C}}
+    [\mathbf{y}]_{\mathcal{C}}
+    =
+    \begin{bmatrix} -2 & 7 \\ 1 & -2 \\ \end{bmatrix}^{-1}
+    \begin{bmatrix} -1 & 4 \\ -1 & 1 \\\end{bmatrix}
+    \begin{bmatrix} 3 \\ 2\\ \end{bmatrix}
+    =
+    \begin{bmatrix} 1\\1 \end{bmatrix}
+\]%
+
+\clearpage
+\section{Question 3} 
+\subsection{Part (a)} 
+\[%
+    \mathbf{b}_{1} 
+    =
+    -\mathbf{c}_{1} + 3 \mathbf{c}_{2} 
+    = 
+    \begin{bmatrix} \mathbf{c}_{1} \ \mathbf{c}_{2}\end{bmatrix}
+    \begin{bmatrix} -1 \\ 3  \end{bmatrix}
+\]%
+
+\[%
+    \mathbf{b}_{2} = 2 \mathbf{c}_{1} - 4 \mathbf{c}_{2}
+    =
+    \begin{bmatrix} \mathbf{c}_{1} \ \mathbf{c}_{2}\end{bmatrix}
+    \begin{bmatrix} 2 \\ -4 \end{bmatrix}
+\]%
+
+\[%
+    \mathbf{P}_{\mathcal{B}} 
+    =
+    \begin{bmatrix} \mathbf{b}_{1} \ \mathbf{b}_{2} \end{bmatrix} 
+    =
+    \begin{bmatrix} \
+    \begin{bmatrix} \mathbf{c}_{1} \ \mathbf{c}_{2}\end{bmatrix}
+    \begin{bmatrix} -1 \\ 3  \end{bmatrix}
+    \ \bigg| \
+    \begin{bmatrix} \mathbf{c}_{1} \ \mathbf{c}_{2}\end{bmatrix}
+    \begin{bmatrix} 2 \\ -4 \end{bmatrix}
+    \
+    \end{bmatrix}
+\]%
+
+\[%
+    \mathbf{P}_{\mathcal{B}}
+    = 
+    \begin{bmatrix} \mathbf{c}_{1} \ \mathbf{c}_{2}\end{bmatrix}
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}
+    = 
+    \mathbf{P}_{\mathcal{C}}
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}
+\]%
+
+\[%
+    \mathbf{P}_{\mathcal{B}}
+    = 
+    \mathbf{P}_{\mathcal{C}}
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}
+\]%
+
+\[%
+    \mathbf{P}_{\mathcal{B}}
+    \ \mathbf{I}
+    = 
+    \mathbf{P}_{\mathcal{C}}
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}
+    \ \mathbf{I}
+\]%
+
+Setting $ [\mathbf{x}]_{\mathcal{B}} \coloneqq \mathbf{I} $ we get:
+
+\[%
+    \mathbf{P}_{\mathcal{B}}
+    [\mathbf{x}]_{\mathcal{B}}
+    = 
+    \mathbf{P}_{\mathcal{C}}
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}
+    [\mathbf{x}]_{\mathcal{B}}
+\]%
+
+So this must mean that our mystery matrix is the change of basis matrix: $
+\mathbf{P}_{\mathcal{C}\mapsfrom \mathcal{B}} $
+
+\[%
+    \mathbf{P}_{\mathcal{B}}
+    [\mathbf{x}]_{\mathcal{B}}
+    = 
+    \mathbf{P}_{\mathcal{C}}
+    (\mathbf{P}_{\mathcal{C}\mapsfrom \mathcal{B}}) 
+    [\mathbf{x}]_{\mathcal{B}}
+    = 
+    \mathbf{P}_{\mathcal{C}}
+    [\mathbf{x}]_{\mathcal{C}}
+    =
+    \mathbf{x}
+\]%
+
+So we have a way to use one as a basis and transform between them.
+
+Hence if $ \mathcal{C} $ is a basis, then $ \mathcal{B} $ must also be.
+
+\subsection{Part (b)} 
+
+
+\[%
+    \mathbf{x} 
+    =
+    5 \mathbf{b}_{1} + 3 \mathbf{b}_{2} 
+    =
+    \mathbf{P}_{\mathcal{B}}
+    \begin{bmatrix} 5 \\ 3 \end{bmatrix}
+\]%
+
+\[%
+    [\mathbf{x}]_{\mathcal{C}} 
+    =
+    \mathbf{P}_{\mathcal{C}}^{-1}
+    \mathbf{P}_{\mathcal{B}}
+    [\mathbf{x}]_{\mathcal{B}}  
+    = 
+    \mathbf{P}_{\mathcal{C}\mapsfrom \mathcal{B}} 
+    [\mathbf{x}]_{\mathcal{B}}
+\]%
+
+From the previous question we have:
+\[%
+    \mathbf{P}_{\mathcal{C}\mapsfrom \mathcal{B}} 
+    =
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}
+\]%
+
+Hence:
+\[%
+    [\mathbf{x}]_{\mathcal{C}}
+    =
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}
+    \begin{bmatrix} 5 \\ 3 \end{bmatrix}
+    =
+    \left[\begin{matrix}1\\3\end{matrix}\right]
+\]%
+
+\subsection{Part (c)} 
+
+
+\[%
+    \mathbf{y}
+    =
+    3 \mathbf{c}_{1} - 5 \mathbf{c}_{2}
+    = 
+    \mathbf{P}_{\mathcal{C}}
+    \begin{bmatrix} 3 \\ -5 \end{bmatrix}
+    =
+    \mathbf{P}_{\mathcal{C}}
+    [\mathbf{y}]_{\mathcal{C}}
+\]%
+
+\[%
+    [\mathbf{y}]_{\mathcal{B}} 
+    = 
+    \mathbf{P}_{\mathcal{B\mapsfrom C}}
+    \mathbf{P}_{\mathcal{C}}
+    [\mathbf{y}]_{\mathcal{C}}
+    =
+    (\mathbf{P}_{\mathcal{C\mapsfrom B}})^{-1}
+    \mathbf{P}_{\mathcal{C}}
+    [\mathbf{y}]_{\mathcal{C}}
+\]%
+
+From the previous question we have:
+\[%
+    \mathbf{P}_{\mathcal{C}\mapsfrom \mathcal{B}} 
+    =
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}
+\]%
+
+Hence:
+
+\[%
+    [\mathbf{y}]_{\mathcal{B}}
+    =
+    (\mathbf{P}_{\mathcal{C\mapsfrom B}})^{-1}
+    \mathbf{P}_{\mathcal{C}}
+    [\mathbf{y}]_{\mathcal{C}}
+    =
+    \begin{bmatrix} \ -1 & 2\\ 3 & -4 \ \end{bmatrix}^{-1}
+    \begin{bmatrix} -1 & 4 \\ -1 & 1 \\\end{bmatrix}
+    \begin{bmatrix} 3 \\ -5 \end{bmatrix}
+    =
+    \begin{bmatrix} -54 \vspace{1mm}\\  -\frac{77}{2}  \end{bmatrix}
+\]%
+
+\clearpage
+\section{Question 4} 
+\subsection{Part (a)} 
+
+\[%
+    \mathcal{Q}
+    =
+    \begin{bmatrix} \
+        \mathbf{q}_{1} \
+        \mathbf{q}_{2} \
+        \mathbf{q}_{3} \ 
+        \mathbf{q}_{4} \
+    \end{bmatrix}
+    =
+    \begin{bmatrix} 
+        0 & 0 & 0 & 1 \\
+		0 & 0 & 1 & 1 \\
+		0 & 1 & 1 & 1 \\
+		1 & 1 & 1 & 1 \\		
+    \end{bmatrix}
+\]%
+
+
+\[%
+    \text{rref} (\mathcal{Q}) 
+    =
+    \begin{bmatrix} 
+        1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 1 \\		
+    \end{bmatrix}
+\]%
+
+$ \mathcal{Q} $ has 4 pivots, meaning it must span $ \R^{4} $ and be linearly
+independent, meeting the criteria for a basis.
+
+\subsection{Part (b)} 
+
+\[%
+    \mathbf{P}_{\mathcal{Q}\mapsfrom \mathcal{H}}
+    =
+    \mathbf{P}_{\mathcal{Q}}^{-1} \mathbf{P}_{\mathcal{H}}
+    =
+    \begin{bmatrix} 
+        0 & 0 & 0 & 1 \\
+		0 & 0 & 1 & 1 \\
+		0 & 1 & 1 & 1 \\
+		1 & 1 & 1 & 1 \\		
+    \end{bmatrix}^{-1}
+    \begin{bmatrix} 
+        0 & 0 & 0 & 8 \\
+		0 & 0 & 4 & 0 \\
+		0 & 2 & 0 & -12 \\
+		1 & 0 & -2 & 0 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} 
+        1 & -2 & -2 & 12 \\
+		0 & 2  & -4 & -12 \\
+		0 & 0  & 4  & -8 \\
+		0 & 0  & 0  & 8 \\		
+    \end{bmatrix}
+\]%
+
+\subsection{Part (c)} 
+
+\[%
+    [\mathbf{r}]_{\mathcal{H}} 
+    =
+    \mathbf{P}_{\mathcal{H}}^{-1}\mathbf{r} 
+\]%
+
+
+\[%
+    =
+    \begin{bmatrix} 
+        0 & 0 & 0 & 8 \\
+		0 & 0 & 4 & 0 \\
+		0 & 2 & 0 & -12 \\
+		1 & 0 & -2 & 0 \\		
+    \end{bmatrix}^{-1}  
+    \begin{bmatrix} 3\\2\\1\\0 \end{bmatrix}
+    =
+    \begin{bmatrix} 
+        1\\
+        \frac{11}{4} \vspace{1.5mm} \\
+        \frac{1}{2}  \vspace{1.5mm} \\ 
+        \frac{3}{8}  
+    \end{bmatrix}
+\]%
+
+\subsection{Part (d)} 
+
+\[%
+    [\mathbf{r}]_{\mathcal{Q}}
+    =
+    \mathbf{P}_{\mathcal{Q}\mapsfrom \mathcal{H}}
+    [\mathbf{r}]_{\mathcal{H}}
+    =
+    \begin{bmatrix} 
+        1 & -2 & -2 & 12 \\
+		0 & 2  & -4 & -12 \\
+		0 & 0  & 4  & -8 \\
+		0 & 0  & 0  & 8 \\		
+    \end{bmatrix}
+    \begin{bmatrix} 
+        1\\
+        \frac{11}{4} \vspace{1.5mm} \\
+        \frac{1}{2}  \vspace{1.5mm} \\ 
+        \frac{3}{8}  
+    \end{bmatrix}
+    =
+    \begin{bmatrix} -1\\-1\\-1\\3 \end{bmatrix}
+\]%
+
+ 
+ 
+
+
+
+
+\clearpage
+
+
+
+-
+
+\end{document}
+

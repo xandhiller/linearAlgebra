@@ -1,0 +1,77 @@
+\documentclass{article}
+\author{Alex Hiller}
+\title{}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}     % \mapsfrom arrow. 
+\usepackage{mathtools}    % \coloneqq
+\usepackage{svg}
+\setsvg{inkscape=inkscape -z -D}
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\section{Basis} 
+Must be linearly independent set.
+
+\section{Spanning Set Theorem} 
+If you have a set $ \mathcal{S} $ and it contains some vectors $ \left\{
+\mathbf{v_1}, \mathbf{v_2} , \ \ldots \ \mathbf{v}_{n}  \right\} $
+And you know that $ \mathcal{S}  $ spans $ \mathcal{H}  $, then if you remove
+the dependent vector from $ \mathcal{S}  $ then it will still span $ \mathcal{H}  $ 
+
+\section{Dimension} 
+\[%
+    \text{dim}(V) = n
+\]%
+It means the number of vectors in the basis of $ V $.
+
+\subsection{Note:} 
+\[%
+    \text{dim}(\mathbf{0}) = 0
+\]%
+If $ V $ is not spanned by a finite set then it is $ \infty  $ dimensional.
+
+\section{Basis Theorem} 
+$ V $ is a $ p $ dimensional vector space. 
+
+$ p \ge 1 $ 
+
+Then:
+
+Any combination of $ p $ linearly independent elements in V can form a basis in
+$ V $.
+
+Any set of $ p $ elements that spans $ V $ is a basis for $ V $.
+
+\subsection{Takeaway:} 
+There are many ways to form a basis.
+
+
+
+
+
+
+
+
+
+\clearpage
+-
+\end{document}
+

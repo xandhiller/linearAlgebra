@@ -1,6 +1,6 @@
 \documentclass{article}
-\author{Alex Hiller}
-\title{}
+\author{Alex Hiller, 11850637}
+\title{Linear Algebra, Assignment 5}
 % Type-setting
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.125cm}
@@ -22,12 +22,371 @@
 \titleformat{\section}{\huge \bfseries}{}{0em}{}[]
 \titleformat{\subsection}{\Large \bfseries}{}{0em}{}
 \titleformat{\subsubsection}{\bfseries}{}{0em}{}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-
 \maketitle
+\section{Question 1} 
+\[%
+    \mathbf{A}
+    =
+    \begin{bmatrix}
+        1 & -2 & 7 & -6 \\
+		-2 & -1 & -9 & 7 \\
+		1 & 13 & -8 & 9 \\
+    \end{bmatrix}
+\]%
+Basis for a vector space spanned by the columns of $ \mathbf{A} $
+First, let's find the vector space spanned by $ \mathbf{A}  $:
+\[%
+    \text{rref} (\mathbf{A}) 
+    =
+    \begin{bmatrix}
+        1 & 0 & 5 & -4 \\
+		0 & 1 & -1 & 1 \\
+		0 & 0 & 0 & 0 \\
+    \end{bmatrix}
+    \quad \Rightarrow \quad
+    \text{rank} ( \mathbf{A} ) = 2
+    \quad \Rightarrow \quad
+    \text{Span} \{ \mathbf{A} \} = \R^{2}
+\]%
+A valid basis for this vector space is that given in the cartesian system:
+\[%
+    \mathbf{a}_1 
+    =
+    \begin{bmatrix}
+        1 \\0 \\
+    \end{bmatrix}
+    \quad
+    \mathbf{a}_2
+    =
+    \begin{bmatrix}
+        0 \\ 1 \\
+    \end{bmatrix}
+    \quad
+    \Rightarrow 
+    \quad
+    \text{Span} \{ \mathbf{a}_{1} , \mathbf{a}_{2}  \} = \R^{2}
+\]%
+
+\section{Question 2} 
+With:
+\[%
+    B = 
+    \left\{ 
+    \begin{bmatrix}
+        1 \\ 2 \\ 3 \\ 4 \\
+    \end{bmatrix},
+    \begin{bmatrix}
+        1 \\ 2 \\ 3 \\ 0 \\
+    \end{bmatrix},
+    \begin{bmatrix}
+        1 \\ 2 \\ 0 \\ 0 \\
+    \end{bmatrix},
+    \begin{bmatrix}
+        1 \\ 0 \\ 0 \\ 0 \\
+    \end{bmatrix}
+    \right\}
+\]%
+We can prove that $B$ is a basis in $ \R^{4} $ if it is linearly independent and
+if it spans $ \R^{4} $.
+
+\subsection{(a) Linear Independence:} 
+Forming an augmented matrix:
+\[%
+    \begin{bmatrix}
+       1 & 1 & 1 & 1 \\
+       2 & 2 & 2 & 0 \\
+       3 & 3 & 0 & 0 \\
+       4 & 0 & 0 & 0 \\
+    \end{bmatrix}
+\]%
+Through row reduction we can reduce this to:
+\[%
+    \begin{bmatrix}
+        1 & 0 & 0 & 0\\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 1 & 0\\
+        0 & 0 & 0 & 1\\		
+    \end{bmatrix}
+\]%
+The matrix has 4 pivots, rank = 4 and hence must span $ \R^{4} $.
+
+\subsection{(b) Find $ \mathbf{x} $} 
+If you have a basis s.t.
+\[%
+    \mathbf{B} = \left\{ \mathbf{b_1}, \ \ldots \ , \mathbf{b_{n}}  \right\}
+\]%
+We can redefine $ \mathbf{B} $ to be:
+\[%
+    \mathbf{B} = 
+    \begin{bmatrix}
+        \mathbf{b}_{1} \ \ldots \ \mathbf{b}_{n}
+    \end{bmatrix}
+\]%
+Then $ \mathbf{x} $ is expressed as $ \left[ \mathbf{x} \right]_{B}  $ via the
+equation:
+\[%
+    \mathbf{x} =  \mathbf{B}\left[ \mathbf{x} \right]_{B}
+\]%
+As a corrollary, it also then follows that:
+\[%
+    \left[ \mathbf{x} \right]_{B} = \mathbf{B}^{-1}\mathbf{x}
+\]%
+
+Solving $ \mathbf{x} = \mathbf{B} \left[ \mathbf{x} \right]_{B}  $  :
+\[%
+    \mathbf{x} = 
+    \begin{bmatrix}
+       1 & 1 & 1 & 1 \\
+       2 & 2 & 2 & 0 \\
+       3 & 3 & 0 & 0 \\
+       4 & 0 & 0 & 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        -1 \\		
+        0 \\
+		0 \\
+		2 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 \\		
+        -2 \\
+		-3 \\
+		-4 \\
+    \end{bmatrix}
+\]%
+
+\subsection{(c) Find $ \left[ \mathbf{y} \right]_{B} $} 
+\[%
+    \left[ \mathbf{y} \right]_{B} = \mathbf{B}^{-1}\mathbf{y}
+\]%
+Inverting $ \mathbf{B} $, we get:
+\[%
+    \mathbf{B}^{-1} = 
+    \begin{bmatrix}
+        0 & 0 & 0 & \frac{1}{4}  \vspace{2mm}\\ 
+        0 & 0 & \frac{1}{3}  & -\frac{1}{4} \vspace{2mm} \\ 
+		0 & \frac{1}{2}  & -\frac{1}{3}  & 0 \vspace{2mm} \\ 
+		1 & -\frac{1}{2}  & 0 & 0 \\		
+    \end{bmatrix}
+\]%
+Evaluating:
+\[%
+    \left[ \mathbf{y} \right]_{B} = \mathbf{B}^{-1}\mathbf{y} 
+    =
+    \begin{bmatrix}
+        0 & 0 & 0 & \frac{1}{4}  \vspace{2mm}\\ 
+        0 & 0 & \frac{1}{3}  & -\frac{1}{4} \vspace{2mm} \\ 
+		0 & \frac{1}{2}  & -\frac{1}{3}  & 0 \vspace{2mm} \\ 
+		1 & -\frac{1}{2}  & 0 & 0 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        10 \\		
+        12 \\
+		9 \\
+		4 \\
+    \end{bmatrix} 
+    =
+    \begin{bmatrix}
+        1 \\		
+        2 \\
+		3 \\
+		4 \\
+    \end{bmatrix} 
+\]%
+
+
+\section{Question 3}
+If the linear transformation $ \mathbf{R} $ is:
+\[%
+    \begin{bmatrix}
+        2 & 0 \\
+		0 & -3 \\		
+    \end{bmatrix}
+\]%
+Let's define the unit square as the set:
+\[%
+    S = \left\{ s_1, s_2, s_3, s_4 \right\}
+\]%
+Where the elements of the set are:
+\[%
+    s_1 = 
+    \begin{bmatrix}
+        0 \\ 0 \\
+    \end{bmatrix}
+    \quad
+    s_2 =
+    \begin{bmatrix}
+        1 \\ 0 \\
+    \end{bmatrix}
+    \quad
+    s_3 = 
+    \begin{bmatrix}
+        1 \\ 1 \\
+    \end{bmatrix}
+    \quad
+    s_4 = 
+    \begin{bmatrix}
+        0 \\ 1 \\
+    \end{bmatrix}
+\]%
+Then mapping each element of $ S $ with $ \mathbf{R} $, we get:
+\[%
+    \mathbf{R} \ s_1 = 
+    \begin{bmatrix}
+        2 & 0 \\
+		0 & -3 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 \\ 0 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 \\ 0 \\
+    \end{bmatrix}
+\]%
+\[%
+    \mathbf{R} \ s_2 = 
+    \begin{bmatrix}
+        2 & 0 \\
+		0 & -3 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\ 0 \\
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        2 \\ 0 \\
+    \end{bmatrix}
+\]%
+\[%
+    \mathbf{R} \ s_3 = 
+    \begin{bmatrix}
+        2 & 0 \\
+		0 & -3 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\ 1 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        2 \\ -3 \\ 
+    \end{bmatrix}
+\]%
+\[%
+    \mathbf{R} \ s_3 = 
+    \begin{bmatrix}
+        2 & 0 \\
+		0 & -3 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 \\ 1 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 \\ -3 \\
+    \end{bmatrix}
+\]%
+Illustrated, it looks like so:
+\begin{figure}[!htbp]
+    \centering
+    \includesvg[width=0.1\textwidth]{transformation} % No file extension.
+    \caption{Blue is the unit square, red is the unit square transformed by  $
+    \mathbf{R} $}
+\end{figure}
+
+
+\section{Question 4} 
+\subsection{(a) Domain and Codomain of $ \mathcal{T} $} 
+Because $ \mathbf{A} $ is $ 4 \times 3 $ with respect to its size:
+\[%
+    \mathbf{A} : \R^{4} \mapsto \R^{3}
+\]%
+
+Therefore 
+\[%
+    \text{Domain} = \R^{4}
+\]%
+\[%
+    \text{Codomain} = \R^{3}
+\]%
+
+\subsection{(b) Range of $ \mathcal{T} $} 
+
+The issue is that the columns of $ \mathbf{A} $ are linearly dependent. This
+means that the columns do not span $ \R^{3} $, it is instead a plane in 3D
+space.
+
+\subsection{(c) Images of Vectors} 
+\[%
+    \mathcal{T}(\mathbf{v})=
+    \begin{bmatrix}
+        1 & -2 & 7 & -6 \\
+		-2 & -1 & -9 & 7 \\
+		1 & 13 & -8 & 9 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\
+		1 \\
+		1 \\
+		1 \\		
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        0 \\
+		-5 \\
+		15 \\		
+    \end{bmatrix}
+\]%
+\[%
+    \mathcal{T}(\mathbf{u})= 
+    \begin{bmatrix}
+        1 & -2 & 7 & -6 \\
+		-2 & -1 & -9 & 7 \\
+		1 & 13 & -8 & 9 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 \\
+		1 \\
+		2 \\
+		2 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 \\
+		-5 \\
+		15 \\		
+    \end{bmatrix}
+\]%
+\[%
+    \mathcal{T}(\mathbf{w})=
+    \begin{bmatrix}
+        1 & -2 & 7 & -6 \\
+		-2 & -1 & -9 & 7 \\
+		1 & 13 & -8 & 9 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        2 \\
+		1 \\
+		0 \\
+		0 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 \\
+		-5 \\
+		15 \\		
+    \end{bmatrix}
+\]%
+
+All the answers lie in a plane because the range of $ \mathbf{A} $ is $ \R^{2}
+$. 
+
+However, couldn't tell you why they are the same point in the plane\ \ldots \
+
 
 
 \end{document}

@@ -1,0 +1,136 @@
+\documentclass{article}
+\author{Alex Hiller}
+\title{}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}               % \mapsfrom arrow. 
+\usepackage{svg}
+\setsvg{inkscape=inkscape -z -D}
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+\section{How Matrix Multiplication is a Mapping} 
+A matrix multiplication can be considered as a linear transformation or an
+operation on a vector, in the form:
+\[%
+    \mathbf{x_{new} } = \mathbf{A}\mathbf{x}
+\]%
+The input vector, $ \mathbf{x} $ is operated on by the matrix $ \mathbf{A} $.
+
+Assume that $ \mathbf{A} $ only operates on $ m \times 1 $ vectors, then:
+\[%
+    \mathbf{A} \in \R^{n \times m}
+\]%
+\[%
+    \mathbf{A}: \R^{m} \rightarrow \R^{n}
+\]%
+This is because the input vectors will have $ m \times 1 $ dimension, meaning
+the $ \mathbf{A} $ operation maps it over to $ n \times 1 $ space, just by the
+dimensions of $ \mathbf{A} $ and elementary linear algebra.
+
+\section{Why $ \mathbf{A}\mathbf{x}+\mathbf{q} $ is not a linear
+transformation}
+For a tranfsformation to be linear, it must obey:
+\[%
+    \mathcal{T}(c \mathbf{v}) = c \cdot \mathcal{T}(\mathbf{v})
+\]%
+If we take $ c=0 $, then:
+\[%
+    \mathbf{A}\left(0 \mathbf{x}\right)+ \mathbf{q} \neq 0
+    \left(\mathbf{A}\mathbf{x}+\mathbf{q}\right)
+\]%
+\[%
+    \mathbf{q} \neq 0
+\]%
+Of course if \textbf{q} is not 0, then it is a linear transformation, which we
+looked at as a mapping, above.
+
+\section{Projection Transformation} 
+You can project one vector space onto another one:
+\[%
+    \begin{bmatrix}
+        x_1 \\
+		x_2 \\
+		x_3 \\		
+    \end{bmatrix}
+    \mapsto 
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 0 \\		
+    \end{bmatrix}
+    \begin{bmatrix}
+        x_1 \\
+		x_2 \\
+		x_3 \\		
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        x_1 \\
+		x_2 \\
+		0 \\		
+    \end{bmatrix}
+\]%
+Hence it projects $ \R^{3}\rightarrow \R^{2} $ by simply destroying the
+third-dimension coordinate.
+
+%
+\qanda
+{Would this be the way that higher dimensions are visualised? By just
+eliminating their higher coordinates ($ x_4,x_5,\ \ldots \, x_{n} $)? }
+{j} 
+
+%
+\clearpage
+\section{Theorem} 
+A linear transformation $ \mathcal{T}: \R^{n} \mapsto \R^{m}  $ is a one-to-one
+transformation iff the equation $ \mathcal{T}(\mathbf{x})= \mathbf{0} $ has only
+the trivial solution: $ \mathbf{x}=\mathbf{0} $.
+
+\section{Theorem} 
+Let $ \mathcal{T}: \R^{n} \mapsto \R^{m} $ be a linear transformation with the
+standard matrix $ \mathbf{T} $. 
+
+\subsubsection{Result 1:}
+
+$ \mathcal{T} $ is a map to $ \R^{m} $ iff the columns of $ \mathbf{T} $ 
+span $ \R^{m} $. 
+
+\subsubsection{Result 2:}
+
+$ \mathcal{T} $ is one-to-one iff the columns of $ \mathbf{T} $ are linearly
+independent. 
+
+\subsubsection{Comments:} 
+
+Result 1 $ \perp $ Result 2 -- i.e. can have one without the other.
+
+E.g. You can have a one-to-one mapping without spanning the codomain.
+
+You can also span the codomain and not have a one-to-one mapping by having $
+\mathbf{T} : \R^{3}\rightarrow \R^{2} $.
+
+
+
+
+
+\end{document}
