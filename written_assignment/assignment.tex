@@ -32,25 +32,31 @@
 \clearpage
 
 The transformation of images is an image processing technique embedded in the
-foundations of linear algebra and forms the bedrock of image editing on
-computers and mobiles. It takes the pixels of one image and maps their
+foundations of linear algebra. It forms the bedrock of image editing on
+computers and mobiles by taking the pixels of one image and mapping their
 pixels to new coordinates on a new image.
 
 Examples of this are shrinking, reflection, dilating, stretching, displacing and
-shearing of an image. For a linear transformation, any of these may also be done
-in succession.
+shearing. Any of these may also be done in succession.
 
 To imagine how this is done, we must first lay some mental ideas of how we will
-treat pictures. It is pertinent to recall that pictures consist of small squares
-called pixels, these elementary units are uniformly coloured and each makes
+treat pictures.
+
+\subsubsection{Mental Model} 
+
+It is pertinent to recall that pictures consist of small squares
+called pixels. These elementary units are uniformly coloured and each makes
 up a very small part of the image. 
 
 For example, a common image size used is $ 1920 \times 1080 $ which is a 
 shorthand for saying 2073600 individual pixels. In an image of this size we have
 one pixel making up less than two-millionths of the whole.
-A digital image is in fact a grid of squares, each with a single 
+
+A digital image is in fact a grid of squares (Figure \ref{grid}), each with 
+a single 
 colour, where that colour is encoded by a number (or array of numbers in 
-the case of colour images), and laid out in a 2D coordinate system.
+the case of colour images) then ordered in a 2D coordinate system (Figure
+\ref{pixels}).
 
 \subsubsection{Simplifying Assumptions} 
 
@@ -59,8 +65,8 @@ begin to provide the complexities of 3D arrays that are not relevant to an
 introductory survey of linear transformations of images.
 
 Furthermore, when we examine the transformations more closely it will be assumed
-that all images lay in a plane with their lower left corner at the origin as 
-is depicted below:
+that all images lay in a plane with their lower left corner at the origin, as 
+depicted below:
 
 \begin{figure}[!htbp]
     \centering
@@ -68,7 +74,6 @@ is depicted below:
     \caption{Reference image that will be used for transformations.}
 \end{figure}
 
-\subsubsection{Mental Model} 
 
 A black-and-white picture is also two-dimensional, meaning that we can organise its 
 pixels in an identical fashion to how a matrix is organised.
@@ -84,18 +89,17 @@ pixels in an identical fashion to how a matrix is organised.
 
 \begin{figure}[!htbp]
     \centering
-    \includesvg[width=0.5\textwidth]{pixels} % No file extension.
+    \includesvg[width=0.4\textwidth]{pixels} % No file extension.
     \caption{A closer look at how the coordinate system works for the pixels of
     an image.}
     \label{pixels}
 \end{figure}
 
-
-
-In Fig. \ref{pixels}, pixels have been labelled with $ (x_n, y_n)  $ indicating
+In Figure \ref{pixels}, pixels have been labelled with $ (x_n, y_n)  $ indicating
 their coordinates. The $ x $-axis indicating columns and the $ y $-axis the
-rows. It's important to note that this is a pixel-by-pixel method of transforming
-images, which is why these coordinates are integral to the method used below:
+rows. This is pixel-by-pixel method of transforming images is integral to the
+examined method in Equation \ref{svg}.
+
 
 \begin{equation}
     \begin{bmatrix}
@@ -117,8 +121,8 @@ images, which is why these coordinates are integral to the method used below:
     \label{svg}
 \end{equation}
 
-We can condense this further to: 
 
+We can condense Equation \ref{svg} further to: 
 \[%
     \mathbf{A} \mathbf{x} = \mathbf{x}'
 \]%
@@ -140,11 +144,12 @@ Let us more closely examine $ \mathbf{A} $.
 
 $ a,\ b, \ c, \ d, \ e \text{ and }f$ all correspond to different parameters that
 affect the image.  The variables $ a \text{ and } e $ are used to scale, magnify 
-or invert. The coefficients $ b $ and  $ d $ are to distort/warp, and $ c $ and 
-$ f $ to displace the whole image around the coordinate system.
+or invert. The coefficients $ b $ and  $ d $ are to distort/warp, where as $ c $ and 
+$ f $ are to displace the whole image around the coordinate system.
 
 Let's have a closer look at how this matrix can be used to alter images.
 
+\clearpage
 \subsection{Dilation/Magnification} 
 
 Setting $ a $ and $ e $ equal to a constant ($ \delta $) allows us to stretch the image.
@@ -170,7 +175,6 @@ Setting $ a $ and $ e $ equal to a constant ($ \delta $) allows us to stretch th
 \end{figure}
 
 
-\clearpage
 \subsection{Reflection} 
 If we then set $ a $ to $-1$ and $ e $ to 1, it will reflect the image over 
 the x-axis. The conjugate operations would cause a reflection over the y-axis.
@@ -211,6 +215,7 @@ the x-axis. The conjugate operations would cause a reflection over the y-axis.
 \end{figure}
 
 
+\clearpage
 \subsection{Shrinking/Compression} 
 
 In a similar manner to dilation we can produce a shrinking effect if we make the
@@ -238,7 +243,6 @@ coefficient smaller than one.
 \end{figure}
 
 
-\clearpage
 \subsection{Stretching} 
 
 If we take our dilation and apply it only to one coordinate, we can stretch just
@@ -285,6 +289,8 @@ one dimension of our object.
     % \caption{}
 \end{figure}
 
+
+\clearpage
 \subsection{Shearing/Warping} 
 We're yet to use our coefficients $ b $ and $ d $, which is because they begin
 to create distortions of our images which are less intuitive.
@@ -333,7 +339,6 @@ to create distortions of our images which are less intuitive.
     \includesvg[width=0.3\textwidth]{shearing_y} % No file extension.
 \end{figure}
 
-\clearpage
 \subsection{Translation} 
 
 The image can also be moved around the plane/canvas with the $ c $ and $ f $
@@ -375,14 +380,15 @@ coefficients.
     % \caption{}
 \end{figure}
 
+\clearpage
 \section{Impact} 
 
 The matrix format listed in Eq. \ref{svg} is that specified by the CSS standard
 for the manipulation of scaleable vector graphics (SVG) files on the web.
 Linear transformations like these are the core of programs like
-\textit{Inkscape} (similar to Adobe Illustrator), which aims to allow people to 
+\textit{Inkscape} (Inkscape Project 2019), which aims to allow people to 
 create illustrations for free. \textit{Inkscape} in fact has a transformation
-tool that uses these coefficients to transform the image.
+tool that uses the coefficients discussed earlier to transform digital vector objects.
 
 \begin{figure}[!htbp]
     \centering
@@ -390,20 +396,39 @@ tool that uses these coefficients to transform the image.
     \caption{The \textit{Inkscape} matrix transformation tool.}
 \end{figure}
     
-
---
-
+There are an exhaustive number of libraries that list the utilise matrices as a
+method for facilitating abstraction for image processing, one being PIL (now
+forked to Pillow) in the Python language (Zenodo 2019). This software library
+also facilitates these transformations, though not in as mathematical terminology 
+as \textit{Inkscape}. The framework for image editing is so ubiquitous that it 
+has made its way into W3C's standards for HTML and CSS (W3C 2019) (Mozilla
+2019). 
 
 \clearpage
 \section{References} 
 
-https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
 
-https://www.w3.org/standards/webdesign/htmlcss
+Mozilla, SVG Transformation, viewed 13th May 2019,
 
-https://inkscape.org/about/
+\qquad $<$developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform$>$
 
-https://pillow.readthedocs.io/en/stable/reference/PixelAccess.html
+
+\vspace{2mm}
+W3C, HTML and CSS, viewed 13th May 2019,
+
+\qquad $<$www.w3.org/standards/webdesign/htmlcss$>$
+
+
+\vspace{2mm}
+Inkscape Project, Inkscape 0.91, viewed 13th May 2019,
+
+\qquad $<$inkscape.org/about/$>$
+
+
+\vspace{2mm}
+Zenodo, Pillow, Version 3.1.0, viewed 13th May 2019,
+
+\qquad $<$pillow.readthedocs.io/en/stable/reference/PixelAccess.html$>$
 
 
 

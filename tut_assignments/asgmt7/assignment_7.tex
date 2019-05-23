@@ -1,0 +1,481 @@
+\documentclass{article}
+\author{Alex Hiller (11850637)}
+\title{Linear Algebra, Assignment 7}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}     % \mapsfrom arrow. 
+\usepackage{mathtools}    % \coloneqq
+\usepackage{svg}
+\setsvg{inkscape=inkscape -z -D}
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\section{Question 1} 
+\subsection{Question 1: Part 1 (a)} 
+\[%
+    \mathbf{A} 
+    = 
+    \begin{bmatrix} 
+        1 & 7 & -6 & -1 & -3 \\
+		1 & -8 & 9 & -3 & 10 \\
+		-2 & -9 & 7 & 1 & 0\\		
+    \end{bmatrix}
+\]%
+
+\[%
+    \text{ref} (\mathbf{A}) 
+    =
+    \begin{bmatrix} \vspace{2mm}
+        2 & \frac{9}{2}  & -\frac{7}{2}  & -\frac{1}{2}  & 0 \\ \vspace{2mm}
+		0 & 5 & -5 & 1 & -4 \\
+		0 & 0 & 0 & 1 & 1 \\		
+    \end{bmatrix}
+\]%
+
+\[%
+    \text{rref} (\mathbf{A}) 
+    = 
+    \begin{bmatrix} 
+        1 & 0 & 1 & 0 & 5 \\
+		0 & 1 & -1 & 0 & -1 \\
+		0 & 0 & 0 & 1 & 1 \\		
+    \end{bmatrix}
+\]%
+
+\subsubsection{Col(\textbf{A})} 
+
+\[%
+    \text{Span} \left\{
+    \begin{bmatrix} 1\\1\\2\\ \end{bmatrix},
+    \begin{bmatrix} 7\\-8\\-9\\ \end{bmatrix},
+    \begin{bmatrix} -1\\-3\\1\\ \end{bmatrix}
+    \right\}
+    =
+    \text{Span} \left\{ 
+    \mathbf{u},\mathbf{v},\mathbf{w}\right\}
+    \Rightarrow 
+    \text{Col}(\mathbf{A}) = 
+    \left\{  
+    a \cdot \mathbf{u} +
+    b \cdot \mathbf{v} +
+    c \cdot \mathbf{w} 
+    =
+    \mathbf{0}
+    \mid
+    \left\{ a,b,c \right\} \in \R
+    \right\}
+\]%
+
+
+\subsubsection{Nul(\textbf{A})} 
+Free variables:
+\[%
+    \left\{ x_3,x_5 \right\}
+\]%
+
+
+
+Basic variables:
+
+\[%
+    \left\{ x_1,x_2,x_4 \right\}
+\]%
+
+Expressing basic in terms of free:
+
+\[%
+    \begin{bmatrix} 
+        x_1 \\
+		x_2 \\
+		x_3 \\
+		x_4 \\
+		x_5 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} 
+        -x_3 -5 x_5 \\
+		x_3+x_5 \\
+		x_3 \\
+		-x_5 \\
+		x_5 \\		
+    \end{bmatrix}
+    =
+    x_3
+    \begin{bmatrix} 
+        -1 \\
+		1 \\
+		1 \\
+		0 \\
+		0 \\		
+    \end{bmatrix}
+    +
+    x_5
+    \begin{bmatrix} 
+        -5 \\
+		1 \\
+		0 \\
+		-1 \\
+		1 \\		
+    \end{bmatrix}
+\]%
+
+So Nul($ \mathbf{A} $) is
+
+\[%
+    \text{Span} \left\{  
+    \begin{bmatrix} 
+        -1 \\
+		1 \\
+		1 \\
+		0 \\
+		0 \\		
+    \end{bmatrix}
+    ,
+    \begin{bmatrix} 
+        -5 \\
+		1 \\
+		0 \\
+		-1 \\
+		1 \\		
+    \end{bmatrix}
+    \right\}
+    =
+    \text{Span} \left\{ \mathbf{u_{n},} \mathbf{v_n}  \right\}
+    \Rightarrow 
+    \text{Nul}(\mathbf{A})
+    =
+    \left\{ 
+    a \cdot\mathbf{u_{n}} + b \cdot \mathbf{v_n} = \mathbf{0}  \mid \left\{ a,b \right\}
+    \in \R
+    \right\}
+\]%
+
+
+
+\subsubsection{Row(\textbf{A})} 
+
+\[%
+    \text{Span} \left\{
+    \begin{bmatrix} \vspace{2mm}
+        2 \\ \vspace{2mm}
+        \frac{9}{2}  \\ \vspace{2mm}
+        -\frac{7}{2}  \\ \vspace{2mm}
+        -\frac{1}{2}  \\ \vspace{2mm}
+        0 \\ 
+    \end{bmatrix},
+    \begin{bmatrix} \vspace{2mm}
+        0  \\ \vspace{2mm}
+        5  \\ \vspace{2mm}
+        -5 \\ \vspace{2mm}
+        1  \\ \vspace{2mm}
+        -4 \\ 
+    \end{bmatrix},
+    \begin{bmatrix} \vspace{2mm}
+        \ 0 \\ \vspace{2mm} 
+        \ 0 \\ \vspace{2mm} 
+        \ 0 \\ \vspace{2mm} 
+        \ 1 \\ \vspace{2mm} 
+        \ 1 \\		
+    \end{bmatrix}
+    \right\}
+    =
+    \text{Span} \left\{ 
+    \mathbf{u_{r}},
+    \mathbf{v_{r}},
+    \mathbf{w_{r}},
+    \right\}
+    \Rightarrow 
+    \text{Row}(\mathbf{A})=
+    \left\{
+    a \cdot \mathbf{u_{r}} +
+    b \cdot \mathbf{v_{r}} +
+    c \cdot \mathbf{w_{r}}
+    =
+    \mathbf{0}
+    \mid   
+    \left\{ a,b,c \right\} \in \R
+    \right\}
+\]%
+\subsection{Question 1: Part 1 (b)} 
+Basis for Col($ \mathbf{A} $)
+
+Basis for Nul($ \mathbf{A} $)
+
+Basis for Row($ \mathbf{A} $)
+
+\subsection{Question 1: Part 1 (c)} 
+dim(Col($ \mathbf{A} $))
+
+dim(Nul($ \mathbf{A} $))
+
+dim(Row($ \mathbf{A} $))
+\subsection{Question 1: Part 1 (d)} 
+
+$ x \in \text{Col}(\mathbf{A}) $
+
+$ x \in \text{Nul}(\mathbf{A}) $
+
+$ x \in \text{Row}(\mathbf{A}) $
+
+\vspace{2mm}
+
+$ y \in \text{Col}(\mathbf{A}) $
+
+$ y \in \text{Nul}(\mathbf{A}) $
+
+$ y \in \text{Row}(\mathbf{A}) $
+\subsection{Question 1: Part 2 (a)} 
+
+
+\[%
+    \mathbf{A}
+    =
+    \begin{bmatrix} 
+        1 & 2 & 3 \\
+		3 & 7 & 8 \\
+		0 & -3 & 3 \\
+		-1 & 3 & -8 \\		
+    \end{bmatrix}
+\]%
+
+\[%
+    \text{ref} (\mathbf{A}) 
+    =
+    \begin{bmatrix} 
+        3 & 7 & 8 \\
+		0 & 1 & -1 \\
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\		
+    \end{bmatrix}
+\]%
+
+\[%
+    \text{rref} (\mathbf{A}) 
+    =
+    \begin{bmatrix} 
+        1 & 0 & 5 \\
+		0 & 1 & -1 \\
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\		
+    \end{bmatrix}
+\]%
+
+\subsubsection{Col(\textbf{A})} 
+\[%
+    \text{Span} \left\{
+    \begin{bmatrix} 1\\3\\0\\-1 \end{bmatrix},
+    \begin{bmatrix} 2\\7\\-3\\3 \end{bmatrix}
+    \right\}
+    =
+    \text{Span} \left\{ 
+    \mathbf{u},\mathbf{v}\right\}
+    \Rightarrow 
+    \text{Col}(\mathbf{A}) = 
+    \left\{  
+    a \cdot \mathbf{u} +
+    b \cdot \mathbf{v} 
+    =
+    \mathbf{0}
+    \mid
+    \left\{ a,b \right\} \in \R
+    \right\}
+\]%
+
+\subsubsection{Nul(\textbf{A})} 
+Free variables
+
+\[%
+    \left\{ x_3 \right\}
+\]%
+
+
+Basic variables:
+
+\[%
+    \left\{ x_1, x_2 \right\}
+\]%
+
+
+Expressing basic in terms of free:
+
+\[%
+    \begin{bmatrix} 
+        x_1 \\
+		x_2 \\
+		x_3 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix} -5 x_3 \\ x_3 \\ x_3 \end{bmatrix}
+    =
+    x_3
+    \begin{bmatrix} -5\\1\\1 \end{bmatrix}
+\]%
+
+
+    
+\[%
+    \text{Span} \left\{  
+    \begin{bmatrix} 
+        -5\\1\\1
+    \end{bmatrix}
+    \right\}
+    =
+    \text{Span} \left\{ \mathbf{u_{n}}   \right\}
+    \Rightarrow 
+    \text{Nul}(\mathbf{A})
+    =
+    \left\{ 
+    a \cdot\mathbf{u_{n}} = \mathbf{0}  \mid \left\{ a \right\}
+    \in \R
+    \right\}
+\]%
+
+
+
+\subsubsection{Row(\textbf{A})} 
+
+\[%
+    \text{Span} \left\{
+    \begin{bmatrix} 1\\0\\5\\   \end{bmatrix},
+    \begin{bmatrix} 0\\1\\-1\\  \end{bmatrix}
+    \right\}
+    =
+    \text{Span} \left\{ 
+    \mathbf{u_{r}},
+    \mathbf{v_{r}}
+    \right\}
+    \Rightarrow 
+    \text{Row}(\mathbf{A})=
+    \left\{
+    a \cdot \mathbf{u_{r}} +
+    b \cdot \mathbf{v_{r}} 
+    =
+    \mathbf{0}
+    \mid   
+    \left\{ a,b \right\} \in \R
+    \right\}
+\]%
+
+
+\subsection{Question 1: Part 2 (b)} 
+Basis for Col($ \mathbf{A} $)
+
+Basis for Nul($ \mathbf{A} $)
+
+Basis for Row($ \mathbf{A} $)
+\subsection{Question 1: Part 2 (c)} 
+dim(Col($ \mathbf{A} $))
+
+dim(Nul($ \mathbf{A} $))
+
+dim(Row($ \mathbf{A} $))
+
+\subsection{Question 1: Part 2 (d)} 
+$ x \in \text{Col}(\mathbf{A}) $
+
+$ x \in \text{Nul}(\mathbf{A}) $
+
+$ x \in \text{Row}(\mathbf{A}) $
+
+\vspace{2mm}
+
+$ y \in \text{Col}(\mathbf{A}) $
+
+$ y \in \text{Nul}(\mathbf{A}) $
+
+$ y \in \text{Row}(\mathbf{A}) $
+
+\section{Question 2} 
+
+\subsection{Part (a)} 
+Matrix is 7 equations (rows) by 8 variables (columns), meaning the size is
+$(7 \times 8)$.
+
+
+\[%
+    \begin{bmatrix} 
+        * & * & * & * & * & * & * & * \\
+        * & * & * & * & * & * & * & * \\
+        * & * & * & * & * & * & * & * \\
+        * & * & * & * & * & * & * & * \\
+        * & * & * & * & * & * & * & * \\
+        * & * & * & * & * & * & * & * \\
+        * & * & * & * & * & * & * & * \\
+    \end{bmatrix}
+\]%
+
+If two of the rows are linearly dependent, then there must be rank 6.
+
+%   \[%
+%       \begin{bmatrix}
+%           * & * & * & * & * & * & * & * \\
+%           * & * & * & * & * & * & * & * \\
+%           * & * & * & * & * & * & * & * \\
+%           * & * & * & * & * & * & * & * \\
+%           * & * & * & * & * & * & * & * \\
+%           0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%           0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+%       \end{bmatrix}
+%   \]%
+
+We can also prove this with the rank theorem:
+
+\[%
+    \text{Rank(}\mathbf{A}) + \text{dim(Nul(}\mathbf{A})) = n
+\]%
+
+Where $ n \coloneqq  $ number of columns
+\[%
+    \therefore n=8
+\]%
+and with there being two dependent equations:
+\[%
+   \text{dim(Nul(}\mathbf{A})) = 2
+\]%
+so
+\[%
+    \text{Rank(}\mathbf{A})  = n  - \text{dim(Nul(}\mathbf{A})) = 8 - 2 
+\]%
+\[%
+    \therefore \text{Rank(}\mathbf{A}) = 6
+\]%
+
+\subsection{Part (b)} 
+\[%
+    \text{dim} (\text{Nul}(\mathbf{A})) = 2
+\]%
+
+
+\subsection{Part (c)} 
+
+
+\subsection{Part (d)} 
+Domain = $ \R^{8} $ 
+
+Codomain = $ \R^{7} $
+
+\subsection{Part (e)} 
+Becuase of the two independent rows, can only span up to $ \R^{5} $.
+
+
+\end{document}
+
