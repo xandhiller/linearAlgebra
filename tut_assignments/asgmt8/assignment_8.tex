@@ -1,0 +1,301 @@
+\documentclass{article}
+\author{Alex Hiller (11850637)}
+\title{Linear Algebra, Assignment 8}
+% Type-setting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.125cm}
+%\pagenumbering{gobble}
+\usepackage[margin=2.5cm]{geometry} % Formatting
+\usepackage{amsmath}      % Mathematics
+\usepackage{amssymb}      % Mathematics
+\usepackage{listings}     % Listings
+\usepackage{esint}        % Mathematics
+\usepackage{color}        % Listings
+\usepackage{courier}      % Listings
+\usepackage{circuitikz}   % Circuits
+\usepackage{titlesec}     % Section Formatting
+\usepackage{stmaryrd}     % \mapsfrom arrow. 
+\usepackage{mathtools}    % \coloneqq
+\usepackage{svg}
+\usepackage{multicol}
+\columnsep=75pt
+\usepackage{blindtext}
+\setsvg{inkscape=inkscape -z -D}
+\input{/home/polluticorn/GitHub/texTemplates/texMacros}
+% Section formatting
+\titleformat{\section}{\huge \bfseries}{}{0em}{}[]
+\titleformat{\subsection}{\Large \bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\bfseries}{}{0em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\clearpage
+\section{Question 1} 
+\subsection{Part (a)} 
+\[%
+    \mathbf{y}
+    =
+    \begin{bmatrix} 7\\1 \end{bmatrix}
+    \qquad
+    \mathbf{u}
+    =
+    \begin{bmatrix} 8\\-6 \end{bmatrix}
+\]%
+
+Finding $\mathbf{y}=\mathbf{\hat{y}+\mathbf{z}}$
+
+\[%
+    \mathbf{\hat{y}} 
+    =
+    \text{proj}_{\mathbf{u}}\left(\mathbf{y}\right)
+    =
+    \sum_{i=1}^{p} \frac{\mathbf{y} \cdot \mathbf{u_i} }{\mathbf{u_i} \cdot
+    \mathbf{u_i}}  \cdot \mathbf{u_i}
+    \quad
+    \Rightarrow 
+    \quad
+    p=1
+    \quad 
+    \Rightarrow 
+    \quad 
+    \mathbf{\hat{y}}
+    =
+    \frac{\mathbf{y} \cdot \mathbf{u_1}}{\mathbf{u_1}  \cdot \mathbf{u_1}}
+    \cdot \mathbf{u_1}
+\]%
+
+\[%
+    \mathbf{y} \cdot \mathbf{u_1} 
+    =
+    (7)(8)+(1)(-6)
+    =
+    56-6
+    =
+    50
+\]%
+
+
+\[%
+    \mathbf{u_1} \cdot \mathbf{u_1}
+    =
+    (8)(8)+(-6)(-6)
+    =
+    64+36
+    =
+    100
+\]%
+
+\[%
+    \mathbf{\hat{y}}
+    =
+    \frac{50}{100} 
+    \begin{bmatrix} 8\\-6 \end{bmatrix}
+    =
+    \frac{1}{2} 
+    \begin{bmatrix} 8\\-6 \end{bmatrix}
+\]%
+
+\[%
+    \therefore \
+    \mathbf{\hat{y}}=
+    \begin{bmatrix} 4\\-3 \end{bmatrix}
+\]%
+
+
+\[%
+    \mathbf{z}
+    =
+    \mathbf{y}
+    -
+    \mathbf{\hat{y}}
+\]%
+
+\[%
+     \therefore 
+     \mathbf{z}
+     =
+     \begin{bmatrix} 7\\1 \end{bmatrix}
+     -
+     \begin{bmatrix} 4\\-3 \end{bmatrix}
+     =
+     \begin{bmatrix} 3\\4 \end{bmatrix}
+\]%
+
+Hence the orthogonal decomposition is:
+
+\[%
+    \mathbf{y}=
+    \begin{bmatrix} 4\\-3 \end{bmatrix}
+    +
+    \begin{bmatrix} 3\\4 \end{bmatrix}
+\]%
+
+\subsection{Part (b)} 
+This would just be the modulus of $\mathbf{z}$.
+
+\[%
+    \|\mathbf{z}\|
+    =
+    \sqrt{3^{2}+4^{2}}
+    =
+    \sqrt{9+16}
+    =
+    5
+\]%
+
+\section{Question 2} 
+
+
+\[%
+    \mathcal{W} = \text{Span} \left\{ \mathbf{u_1}, \mathbf{u_2} \right\}
+\]%
+
+
+\[%
+    \mathbf{y_1}
+    =
+    \begin{bmatrix} 5\\3\\5 \end{bmatrix}
+    \qquad
+    \mathbf{y_2}
+    =
+    \begin{bmatrix} 3\\-2\\ 0 \end{bmatrix}
+    \qquad
+    \mathbf{u_1}
+    =
+    \begin{bmatrix}0\\2\\-1\end{bmatrix}
+    \qquad
+    \mathbf{u_2}
+    =
+    \begin{bmatrix}-15\\2\\4\end{bmatrix}
+\]%
+
+\subsection{Part (a)} 
+
+First vector:
+\[%
+    \mathbf{y_1}
+    =
+    \mathbf{\hat{y}_{1}}+\mathbf{z_1}
+\]%
+
+
+\[%
+    \mathbf{\hat{y_1}}
+    =
+    \text{proj}_{\mathcal{W}}\left(\mathbf{y_1}\right)
+    =
+    \sum_{i=1}^{p=2} 
+    \frac{\mathbf{y_1} \cdot \mathbf{u_i} }{\mathbf{u_i} \cdot
+    \mathbf{u_i}}  \cdot \mathbf{u_i}
+\]%
+
+
+
+\[%
+    \mathbf{\hat{y_1}}
+    =
+    \frac{\mathbf{y_1} \cdot \mathbf{u_1} }{\mathbf{u_1} \cdot
+    \mathbf{u_1}}  \cdot \mathbf{u_1}
+    +
+    \frac{\mathbf{y_1} \cdot \mathbf{u_2} }{\mathbf{u_2} \cdot
+    \mathbf{u_2}}  \cdot \mathbf{u_2}
+    =
+    \begin{bmatrix}3\\0\\-1\end{bmatrix}
+\]%
+
+
+\[%
+    \mathbf{z_1}
+    =
+    \mathbf{y_1}-\mathbf{\hat{y_1}}
+    =
+    \begin{bmatrix}5\\3\\5\end{bmatrix}
+    -
+    \begin{bmatrix}3\\0\\-1\end{bmatrix}
+    =
+    \begin{bmatrix}2\\3\\6\end{bmatrix}
+\]%
+
+\[%
+     \therefore \mathbf{y_1} = 
+     \begin{bmatrix}3\\0\\-1\end{bmatrix}
+     +
+     \begin{bmatrix}2\\3\\6\end{bmatrix}
+\]%
+
+
+Second vector:
+\[%
+    \mathbf{y_2}
+    =
+    \mathbf{\hat{y_2}}
+    +
+    \mathbf{z_2}
+\]%
+
+\[%
+    \mathbf{\hat{y_2}}
+    =
+    \frac{\mathbf{y_2} \cdot \mathbf{u_1} }{\mathbf{u_1} \cdot
+    \mathbf{u_1}}  \cdot \mathbf{u_1}
+    +
+    \frac{\mathbf{y_2} \cdot \mathbf{u_2} }{\mathbf{u_2} \cdot
+    \mathbf{u_2}}  \cdot \mathbf{u_2}
+    =
+    \begin{bmatrix}3\\-2\\0\end{bmatrix}
+\]%
+
+
+\[%
+    \mathbf{z_2}
+    =
+    \mathbf{y_2}-\mathbf{\hat{y_2}}
+    =
+    \begin{bmatrix}3\\-2\\0\end{bmatrix}
+    -
+    \begin{bmatrix}3\\-2\\0\end{bmatrix}
+    =
+    0
+\]%
+
+\[%
+     \therefore \mathbf{y_2} = 
+     \begin{bmatrix}3\\-2\\0\end{bmatrix}
+     +
+     \begin{bmatrix}0\\0\\0\end{bmatrix}
+\]%
+
+\subsection{Part (b)} 
+Distance from $\mathbf{y_1}$ to $\mathcal{W}$ is equal to the modulus of the $\mathbf{z}$
+component of the orthogonal decomposition.
+
+ 
+
+\[%
+    \|\mathbf{z_1}\|
+    =
+    \sqrt{2^{2}+3^{2}+6^{2}}
+    =
+    7
+\]%
+
+\[%
+    \|\mathbf{z_2}\|
+    =
+    0
+\]%
+
+Therefore, $\mathbf{y_1}$ is 7 units from $\mathcal{W}$ and $\mathbf{y_2}$ is 0
+units from $\mathcal{W}$. 
+
+\[%
+     \therefore \mathbf{y_2}
+     \in 
+     \mathcal{W}
+\]%
+
+\end{document}
+

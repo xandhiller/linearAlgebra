@@ -1,0 +1,33 @@
+\contentsline {section}{\numberline {1}Question 1}{3}
+\contentsline {subsection}{\numberline {1.1}Question 1: Part 1 (a)}{3}
+\contentsline {subsubsection}{\numberline {1.1.1}Col(\textbf {A})}{3}
+\contentsline {subsubsection}{\numberline {1.1.2}Nul(\textbf {A})}{3}
+\contentsline {subsubsection}{\numberline {1.1.3}Row(\textbf {A})}{4}
+\contentsline {subsection}{\numberline {1.2}Question 1: Part 1 (b)}{4}
+\contentsline {subsection}{\numberline {1.3}Question 1: Part 1 (c)}{4}
+\contentsline {subsection}{\numberline {1.4}Question 1: Part 1 (d)}{5}
+\contentsline {subsubsection}{\numberline {1.4.1}$ x \in \text {Col}(\mathbf {A}) $ ?}{5}
+\contentsline {subsubsection}{\numberline {1.4.2}$ x \in \text {Nul}(\mathbf {A}) \ ?$}{5}
+\contentsline {subsubsection}{\numberline {1.4.3}$ x \in \text {Row}(\mathbf {A}) \ ?$}{5}
+\contentsline {subsubsection}{\numberline {1.4.4}$ y \in \text {Col}(\mathbf {A}) \ ?$}{5}
+\contentsline {subsubsection}{\numberline {1.4.5}$ y \in \text {Nul}(\mathbf {A}) \ ?$}{5}
+\contentsline {subsubsection}{\numberline {1.4.6}$ y \in \text {Row}(\mathbf {A}) \ ?$}{6}
+\contentsline {subsection}{\numberline {1.5}Question 1: Part 2 (a)}{6}
+\contentsline {subsubsection}{\numberline {1.5.1}Col(\textbf {A})}{7}
+\contentsline {subsubsection}{\numberline {1.5.2}Nul(\textbf {A})}{7}
+\contentsline {subsubsection}{\numberline {1.5.3}Row(\textbf {A})}{7}
+\contentsline {subsection}{\numberline {1.6}Question 1: Part 2 (b)}{7}
+\contentsline {subsection}{\numberline {1.7}Question 1: Part 2 (c)}{8}
+\contentsline {subsection}{\numberline {1.8}Question 1: Part 2 (d)}{8}
+\contentsline {subsubsection}{\numberline {1.8.1}$ x \in \text {Col}(\mathbf {A}) \ ?$}{8}
+\contentsline {subsubsection}{\numberline {1.8.2}$ x \in \text {Nul}(\mathbf {A}) \ ?$}{8}
+\contentsline {subsubsection}{\numberline {1.8.3}$ x \in \text {Row}(\mathbf {A}) \ ?$}{8}
+\contentsline {subsubsection}{\numberline {1.8.4}$ y \in \text {Col}(\mathbf {A}) \ ?$}{9}
+\contentsline {subsubsection}{\numberline {1.8.5}$ y \in \text {Nul}(\mathbf {A}) \ ?$}{9}
+\contentsline {subsubsection}{\numberline {1.8.6}$ y \in \text {Row}(\mathbf {A}) \ ?$}{9}
+\contentsline {section}{\numberline {2}Question 2}{9}
+\contentsline {subsection}{\numberline {2.1}Part (a)}{9}
+\contentsline {subsection}{\numberline {2.2}Part (b)}{10}
+\contentsline {subsection}{\numberline {2.3}Part (c)}{10}
+\contentsline {subsection}{\numberline {2.4}Part (d)}{10}
+\contentsline {subsection}{\numberline {2.5}Part (e)}{10}

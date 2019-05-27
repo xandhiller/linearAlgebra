@@ -4,7 +4,7 @@
 % Type-setting
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.125cm}
-\pagenumbering{gobble}
+%\pagenumbering{gobble}
 \usepackage[margin=2.5cm]{geometry} % Formatting
 \usepackage{amsmath}      % Mathematics
 \usepackage{amssymb}      % Mathematics
@@ -28,9 +28,12 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
+\clearpage
 
 \section{Question 1} 
 \subsection{Question 1: Part 1 (a)} 
+
 \[%
     \mathbf{A} 
     = 
@@ -40,7 +43,7 @@
 		-2 & -9 & 7 & 1 & 0\\		
     \end{bmatrix}
 \]%
-
+\\
 \[%
     \text{ref} (\mathbf{A}) 
     =
@@ -91,8 +94,6 @@ Free variables:
 \[%
     \left\{ x_3,x_5 \right\}
 \]%
-
-
 
 Basic variables:
 
@@ -215,34 +216,256 @@ So Nul($ \mathbf{A} $) is
     \left\{ a,b,c \right\} \in \R
     \right\}
 \]%
+
 \subsection{Question 1: Part 1 (b)} 
 Basis for Col($ \mathbf{A} $)
 
+\[%
+    \left\{
+    \begin{bmatrix} 1\\1\\2\\ \end{bmatrix},
+    \begin{bmatrix} 7\\-8\\-9\\ \end{bmatrix},
+    \begin{bmatrix} -1\\-3\\1\\ \end{bmatrix}
+    \right\}
+\]%
+
+
 Basis for Nul($ \mathbf{A} $)
+
+\[%
+    \left\{     
+    \begin{bmatrix} 
+        -1 \\
+		1 \\
+		1 \\
+		0 \\
+		0 \\		
+    \end{bmatrix}
+    ,
+    \begin{bmatrix} 
+        -5 \\
+		1 \\
+		0 \\
+		-1 \\
+		1 \\		
+    \end{bmatrix}
+    \right\}
+\]%
+
 
 Basis for Row($ \mathbf{A} $)
 
+\[%
+    \left\{
+    \begin{bmatrix} \vspace{2mm}
+        2 \\ \vspace{2mm}
+        \frac{9}{2}  \\ \vspace{2mm}
+        -\frac{7}{2}  \\ \vspace{2mm}
+        -\frac{1}{2}  \\ \vspace{2mm}
+        0 \\ 
+    \end{bmatrix},
+    \begin{bmatrix} \vspace{2mm}
+        0  \\ \vspace{2mm}
+        5  \\ \vspace{2mm}
+        -5 \\ \vspace{2mm}
+        1  \\ \vspace{2mm}
+        -4 \\ 
+    \end{bmatrix},
+    \begin{bmatrix} \vspace{2mm}
+        \ 0 \\ \vspace{2mm} 
+        \ 0 \\ \vspace{2mm} 
+        \ 0 \\ \vspace{2mm} 
+        \ 1 \\ \vspace{2mm} 
+        \ 1 \\		
+    \end{bmatrix}
+    \right\}
+\]%
+
+
+
 \subsection{Question 1: Part 1 (c)} 
-dim(Col($ \mathbf{A} $))
+dim(Col($\mathbf{A}$)) = 3
 
-dim(Nul($ \mathbf{A} $))
+dim(Nul($ \mathbf{A} $)) = 2
 
-dim(Row($ \mathbf{A} $))
+dim(Row($ \mathbf{A} $)) = dim(Col($\mathbf{A}$)) = 3
+
+\clearpage
 \subsection{Question 1: Part 1 (d)} 
 
-$ x \in \text{Col}(\mathbf{A}) $
+\[%
+    x 
+    =
+    \begin{bmatrix} 2\\-9\\3 \end{bmatrix}
+    \quad
+    y
+    =
+    \begin{bmatrix} 4\\0\\1\\1\\-1 \end{bmatrix}
+\]%
 
-$ x \in \text{Nul}(\mathbf{A}) $
+\subsubsection{$ x \in \text{Col}(\mathbf{A}) $ ?} 
 
-$ x \in \text{Row}(\mathbf{A}) $
+Take the $\text{Col}(\mathbf{A})$, form a matrix, invert and multiply by $x$. 
+
+\[%
+    \begin{bmatrix} 
+        1&1&2\\ 
+        7&-8&-9\\ 
+        -1&-3&1\\ 
+    \end{bmatrix}^{-1}
+    \begin{bmatrix} 2\\-9\\3 \end{bmatrix}
+    =
+    \begin{bmatrix} \frac{25}{13} \vspace{2mm}\\ \frac{5}{13} \vspace{2mm} \\ \frac{34}{13}  \end{bmatrix}
+\]%
+
+$$\therefore x \in \text{Col}(\mathbf{A})$$
+
+\subsubsection{$ x \in \text{Nul}(\mathbf{A}) \ ?$}
+The dimensions of the Null space do not match $x$ and so it \textbf{cannot} be in the
+Null space. i.e. the Null space is made of vectors that have 5 entries, where as 
+$x$ only has 3.
+
+\subsubsection{$ x \in \text{Row}(\mathbf{A}) \ ?$}
+The dimensions of the Row space do not match $x$ and so it \textbf{cannot} be in the
+Row space. i.e. the Row space is made of vectors that have 5 entries, where as
+$x$ only has 3.
 
 \vspace{2mm}
 
-$ y \in \text{Col}(\mathbf{A}) $
+\subsubsection{$ y \in \text{Col}(\mathbf{A}) \ ?$}
+The dimensions of the Column space does not match $y$ and so it \textbf{cannot} be in the
+Column space. i.e. the Column space is made of vectors that have 3 entries, where as
+$y$ has 5.
 
-$ y \in \text{Nul}(\mathbf{A}) $
+\subsubsection{$ y \in \text{Nul}(\mathbf{A}) \ ?$}
 
-$ y \in \text{Row}(\mathbf{A}) $
+
+\[%
+    a \mathbf{u_n} + b \mathbf{v_n} = \mathbf{y}
+\]%
+\[%
+    a
+    \begin{bmatrix} 
+        -1 \\
+		1 \\
+		1 \\
+		0 \\
+		0 \\		
+    \end{bmatrix}
+    +
+    b
+    \begin{bmatrix} 
+        -5 \\
+		1 \\
+		0 \\
+		-1 \\
+		1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} 4\\0\\1\\1\\-1 \end{bmatrix}
+\]%
+
+Form an augmented matrix:
+\[%
+    \mathcal{N} = 
+    \begin{bmatrix} 
+        -1 & -5 & 4 \\
+		1 & 1 & 0 \\
+		1 & 0 & 1 \\
+		0 & -1 & 1 \\
+		0 & 1 & -1 \\		
+    \end{bmatrix}
+\]%
+
+Get into reduced echelon form:
+
+\[%
+    \text{rref} (\mathcal{N}) 
+    =
+    \begin{bmatrix} 
+        1 & 0 & 1 \\
+		0 & 1 & -1 \\
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\		
+    \end{bmatrix}
+\]%
+
+So $a = 1$ and $b = -1$, so  $y$ is a linear combination of the null vectors,
+meaning it lies in the space Null space.
+
+\[%
+    \therefore y \in \text{Nul}(\mathbf{A})
+\]%
+
+\subsubsection{$ y \in \text{Row}(\mathbf{A}) \ ?$}
+
+\[%
+    a \mathbf{u_r} + b \mathbf{v_r} + c \mathbf{w_r}  = \mathbf{y}
+\]%
+\[%
+    a
+     \begin{bmatrix} 
+        \vspace{2mm}
+        2 \\ \vspace{2mm}
+        \frac{9}{2}  \\ \vspace{2mm}
+        -\frac{7}{2}  \\ \vspace{2mm}
+        -\frac{1}{2}  \\ \vspace{2mm}
+        0 \\ 
+    \end{bmatrix}
+    +
+    b
+    \begin{bmatrix} \vspace{2mm}
+        0  \\ \vspace{2mm}
+        5  \\ \vspace{2mm}
+        -5 \\ \vspace{2mm}
+        1  \\ \vspace{2mm}
+        -4 \\ 
+    \end{bmatrix}
+    +
+    c
+    \begin{bmatrix} \vspace{2mm}
+        \ 0 \\ \vspace{2mm} 
+        \ 0 \\ \vspace{2mm} 
+        \ 0 \\ \vspace{2mm} 
+        \ 1 \\ \vspace{2mm} 
+        \ 1 \\		
+    \end{bmatrix}
+    =
+    \begin{bmatrix} 4\\0\\1\\1\\-1 \end{bmatrix}
+\]%
+
+Form an augmented matrix:
+\[%
+    \mathcal{C} = 
+    \begin{bmatrix}     \vspace{2mm}
+        2            &  0  & \ 0 & 4 \\ \vspace{2mm}
+        \frac{9}{2}  &  5  & \ 0 & 0 \\ \vspace{2mm}
+        -\frac{7}{2} &  -5 & \ 0 & 1 \\ \vspace{2mm}
+        -\frac{1}{2} &  1  & \ 1 & 1 \\ \vspace{2mm}
+        0            &  -4 & \ 1 & -1 \\ 
+    \end{bmatrix}
+\]%
+
+Get into reduced echelon form:
+
+\[%
+    \text{rref} (\mathcal{C}) 
+    =
+    \begin{bmatrix} 
+        1 & 0 & 0 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 1 \\
+		0 & 0 & 0 & 0 \\		
+    \end{bmatrix}
+\]%
+
+Here, we have an inconsistent system, meaning that $y \notin
+\text{Row}(\mathbf{A})$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Question 1: Part 2 (a)} 
 
 
@@ -280,6 +503,7 @@ $ y \in \text{Row}(\mathbf{A}) $
 \]%
 
 \subsubsection{Col(\textbf{A})} 
+
 \[%
     \text{Span} \left\{
     \begin{bmatrix} 1\\3\\0\\-1 \end{bmatrix},
@@ -302,14 +526,10 @@ $ y \in \text{Row}(\mathbf{A}) $
 
 \subsubsection{Nul(\textbf{A})} 
 Free variables
-
 \[%
     \left\{ x_3 \right\}
 \]%
-
-
 Basic variables:
-
 \[%
     \left\{ x_1, x_2 \right\}
 \]%
@@ -330,8 +550,6 @@ Expressing basic in terms of free:
     \begin{bmatrix} -5\\1\\1 \end{bmatrix}
 \]%
 
-
-    
 \[%
     \text{Span} \left\{  
     \begin{bmatrix} 
@@ -348,8 +566,6 @@ Expressing basic in terms of free:
     \in \R
     \right\}
 \]%
-
-
 
 \subsubsection{Row(\textbf{A})} 
 
@@ -378,38 +594,220 @@ Expressing basic in terms of free:
 
 \subsection{Question 1: Part 2 (b)} 
 Basis for Col($ \mathbf{A} $)
+\[%
+    \left\{ 
+    \begin{bmatrix} 1\\3\\0\\-1\\ \end{bmatrix},
+    \begin{bmatrix} 2\\7\\-3\\3\\ \end{bmatrix}
+    \right\}
+\]%
 
 Basis for Nul($ \mathbf{A} $)
+\[%
+    \left\{ 
+    \begin{bmatrix} -5\\1\\1 \end{bmatrix}
+    \right\}
+\]%
+
 
 Basis for Row($ \mathbf{A} $)
+\[%
+    \left\{ 
+    \begin{bmatrix} 1\\0\\ 5\\ \end{bmatrix},
+    \begin{bmatrix} 0\\1\\-1\\ \end{bmatrix}
+    \right\}
+\]%
+
+
+
+
 \subsection{Question 1: Part 2 (c)} 
-dim(Col($ \mathbf{A} $))
+dim(Col($ \mathbf{A} $)) = 2
 
-dim(Nul($ \mathbf{A} $))
+dim(Nul($ \mathbf{A} $)) = 1
 
-dim(Row($ \mathbf{A} $))
+dim(Row($ \mathbf{A} $)) = dim(Col($ \mathbf{A} $)) = 2
 
 \subsection{Question 1: Part 2 (d)} 
-$ x \in \text{Col}(\mathbf{A}) $
 
-$ x \in \text{Nul}(\mathbf{A}) $
 
-$ x \in \text{Row}(\mathbf{A}) $
+\[%
+    x
+    =
+    \begin{bmatrix} 1\\2\\3 \end{bmatrix}
+    \quad
+    y
+    =
+    \begin{bmatrix} 0\\2\\-6\\10 \end{bmatrix}
+\]%
+
+
+\subsubsection{$ x \in \text{Col}(\mathbf{A}) \ ?$}
+The dimensions do not match up.
+
+$x$ has three entries, $\text{Col}(\mathbf{A})$ has four entries, there is no
+way that $x$ can be contained in the space spanned by $\text{Col}(\mathbf{A})$.
+
+
+\[%
+    \therefore x \notin \text{Col}(\mathbf{A})
+\]%
+
+
+\subsubsection{$ x \in \text{Nul}(\mathbf{A}) \ ?$}
+If $x$ was in $\text{Nul}(\mathbf{A})$, it would have to be a linear combination
+of its single basis vector.
+
+\[%
+    a \cdot \begin{bmatrix} -5\\1\\1 \end{bmatrix} 
+    =
+    \begin{bmatrix} 1\\2\\3 \end{bmatrix}
+    =
+    \begin{bmatrix} -5a\\a\\a \end{bmatrix} 
+\]%
+
+This shows us that $a$ would have to simultaneously be equal to 2 and 3, meaning
+that:
+
+\[%
+    x  \notin \text{Nul}(\mathbf{A})
+\]%
+
+\subsubsection{$ x \in \text{Row}(\mathbf{A}) \ ?$}
+If $x$ was a linear combination of the basis vectors for the row space, we
+would have:
+
+
+\[%
+    a \cdot 
+    \begin{bmatrix} 1\\0\\5 \end{bmatrix}
+    +
+    b  \cdot 
+    \begin{bmatrix} 0\\1\\-1 \end{bmatrix}
+    =
+    \begin{bmatrix} 1\\2\\3 \end{bmatrix}
+\]%
+
+Forming an augmented matrix:
+
+\[%
+    \begin{bmatrix} 
+        1 & 0 & 1 \\
+		0 & 1 & 2 \\
+		5 & -1 & 3 \\		
+    \end{bmatrix}
+    \Rightarrow 
+    \text{rref} \left(
+    \begin{bmatrix} 
+        1 & 0 & 1 \\
+		0 & 1 & 2 \\
+		5 & -1 & 3 \\		
+    \end{bmatrix}
+    \right)
+    =
+    \begin{bmatrix} 
+        1 & 0 & 2 \\
+		0 & 1 & 1 \\
+		0 & 0 & 0 \\		
+    \end{bmatrix}
+\]%
+
+So $a=2$ and $b=1$, meaning that:
+
+\[%
+    x \in \text{Row}(\mathbf{A})
+\]%
+
 
 \vspace{2mm}
 
-$ y \in \text{Col}(\mathbf{A}) $
+\subsubsection{$ y \in \text{Col}(\mathbf{A}) \ ?$}
+If $y$ is contained $\text{Col}(\mathbf{A})$ then:
 
-$ y \in \text{Nul}(\mathbf{A}) $
+\[%
+    a \cdot 
+    \begin{bmatrix} 1\\3\\0\\-1 \end{bmatrix}
+    +
+    b \cdot 
+    \begin{bmatrix} 2\\7\\-3\\3 \end{bmatrix}
+    =
+    \begin{bmatrix} 0\\2\\-6\\10 \end{bmatrix} 
+\]%
 
-$ y \in \text{Row}(\mathbf{A}) $
+Where $\left\{ a,b \right\}\in \R$.
 
+Forming an augmented matrix with the basis matrix of $\text{Col}(\mathbf{A})$.
+
+\[%
+    \begin{bmatrix} 
+        1 & 2 & 0 \\
+		3 & 7 & 2 \\
+		0 & -3 & -6 \\
+		-1 & 3 & 10 \\		
+    \end{bmatrix}
+\]%
+
+\[%
+    \text{rref} \left(
+    \begin{bmatrix} 
+        1 & 2 & 0 \\
+		3 & 7 & 2 \\
+		0 & -3 & -6 \\
+		-1 & 3 & 10 \\		
+    \end{bmatrix}
+    \right) 
+    =
+    \begin{bmatrix} 
+        1 & 0 & -4 \\
+		0 & 1 & 2 \\
+		0 & 0 & 0 \\
+		0 & 0 & 0 \\		
+    \end{bmatrix}
+\]%
+
+Hence:
+
+\[%
+    y
+    \in 
+    \text{Col}(\mathbf{A})
+    \quad
+    \because
+    \quad
+    y
+    =
+    -4 \cdot 
+    \begin{bmatrix} 1\\3\\0\\-1 \end{bmatrix}
+    +
+    2 \cdot 
+    \begin{bmatrix} 2\\7\\-3\\3 \end{bmatrix}
+    =
+    \begin{bmatrix} 0\\2\\-6\\10 \end{bmatrix} 
+
+\]%
+
+
+\subsubsection{$ y \in \text{Nul}(\mathbf{A}) \ ?$}
+Dimensions not appropriate.
+
+\[%
+    y  \notin \text{Nul}(\mathbf{A})
+\]%
+
+\subsubsection{$ y \in \text{Row}(\mathbf{A}) \ ?$}
+Dimensions not appropriate.
+
+\[%
+    y  \notin \text{Row}(\mathbf{A})
+\]%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Question 2} 
 
 \subsection{Part (a)} 
 Matrix is 7 equations (rows) by 8 variables (columns), meaning the size is
 $(7 \times 8)$.
-
 
 \[%
     \begin{bmatrix} 
@@ -424,18 +822,6 @@ $(7 \times 8)$.
 \]%
 
 If two of the rows are linearly dependent, then there must be rank 6.
-
-%   \[%
-%       \begin{bmatrix}
-%           * & * & * & * & * & * & * & * \\
-%           * & * & * & * & * & * & * & * \\
-%           * & * & * & * & * & * & * & * \\
-%           * & * & * & * & * & * & * & * \\
-%           * & * & * & * & * & * & * & * \\
-%           0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-%           0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-%       \end{bmatrix}
-%   \]%
 
 We can also prove this with the rank theorem:
 
@@ -455,6 +841,7 @@ so
 \[%
     \text{Rank(}\mathbf{A})  = n  - \text{dim(Nul(}\mathbf{A})) = 8 - 2 
 \]%
+\\
 \[%
     \therefore \text{Rank(}\mathbf{A}) = 6
 \]%
@@ -466,15 +853,22 @@ so
 
 
 \subsection{Part (c)} 
-
+No, it does not have a solution for any $\mathbf{b}$. $\mathbf{b}$ would be of
+size $(7 \times 1)$. However, the column space of $\mathbf{A}$ only spans up to
+$\R^{6}$. Because of this, $\mathbf{A}\mathbf{x} = \mathbf{b}$ cannot express
+any $\mathbf{b}$. For that, $\text{Col}(\mathbf{A})$ would have to span
+$\R^{7}$.
 
 \subsection{Part (d)} 
+By the dimensions of the matrix.
+
 Domain = $ \R^{8} $ 
 
 Codomain = $ \R^{7} $
 
 \subsection{Part (e)} 
-Becuase of the two independent rows, can only span up to $ \R^{5} $.
+Becuase of the two dependent rows, the range can only be spanning up to $ \R^{6} $.
+
 
 
 \end{document}
