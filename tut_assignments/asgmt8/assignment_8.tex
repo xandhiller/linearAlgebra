@@ -31,7 +31,7 @@
 
 \begin{document}
 \maketitle
-
+\tableofcontents
 \clearpage
 \section{Question 1} 
 \subsection{Part (a)} 
@@ -146,6 +146,7 @@ This would just be the modulus of $\mathbf{z}$.
     5
 \]%
 
+\clearpage
 \section{Question 2} 
 
 
@@ -296,6 +297,187 @@ units from $\mathcal{W}$.
      \in 
      \mathcal{W}
 \]%
+
+
+\clearpage
+\section{Question 3} 
+\subsection{Part (a)} 
+The Gram-Schmidt (a method used to convert a basis to an orthogonal basis) can concisely be written as:
+
+\[%
+    \mathbf{v_k}
+    =
+    \mathbf{x_k}
+    -
+    \sum_{j=1}^{k-1} \text{proj}_{\mathbf{v_j}}\left(\mathbf{x_k}\right)
+\]%
+
+Our vectors are:
+
+\[%
+    \mathbf{a_1}
+    =
+    \begin{bmatrix}1\\-1\\1\\-1\end{bmatrix}
+    \quad
+    \mathbf{a_2}
+    =
+    \begin{bmatrix}4\\2\\2\\0\end{bmatrix}
+    \quad
+    \mathbf{a_3}
+    =
+    \begin{bmatrix}4\\3\\2\\1\end{bmatrix}
+\]%
+
+Finding our orthogonal set \ldots
+
+
+\[%
+    \mathbf{v_1}
+    =
+    \mathbf{x_1}
+\]%
+
+\[%
+    \mathbf{v_2}
+    =
+    \mathbf{x_2}
+    -
+    \text{proj}_{\mathbf{v_1}}\left(\mathbf{x_2}\right)
+    =
+    \mathbf{v_1}
+    -
+    \frac{\mathbf{x_2}\cdot \mathbf{v_1}}{\mathbf{v_1}\cdot \mathbf{v_1}} \mathbf{v_1}
+\]%
+
+\[%
+    \mathbf{v_3}
+    =
+    \mathbf{x_3}
+    -
+    \text{proj}_{\mathbf{v_1}}\left(\mathbf{x_3}\right)
+    -
+    \text{proj}_{\mathbf{v_2}}\left(\mathbf{x_3}\right)
+    =
+    \mathbf{v_1}
+    -
+    \frac{\mathbf{x_2}\cdot \mathbf{v_1}}{\mathbf{v_1}\cdot
+    \mathbf{v_1}}\mathbf{v_1}
+    -
+    \frac{\mathbf{x_3}\cdot \mathbf{v_2}}{\mathbf{v_2}\cdot \mathbf{v_2}}\mathbf{v_2}
+\]%
+
+\[%
+    \mathbf{v_1}
+    =
+    \begin{bmatrix}1\\-1\\1\\-1\\\end{bmatrix}
+    \quad
+    \mathbf{v_2}
+    =
+    \begin{bmatrix}3\\3\\1\\1\end{bmatrix}
+    \quad
+    \mathbf{v_3}
+    =
+    \begin{bmatrix}-{1}/{10} \\-{1}/{10} \\{3}/{10} \\{3}/{10} \end{bmatrix}
+\]%
+
+\subsection{Part (b)} 
+Finding our orthonormal set:
+
+
+\[%
+    \mathbf{u_1}
+    =
+    \frac{\mathbf{v_1}}{\|\mathbf{v_1}\|}
+    \qquad
+    \mathbf{u_2}
+    =
+    \frac{\mathbf{v_2}}{\|\mathbf{v_2}\|}
+    \qquad
+    \mathbf{u_3}
+    =
+    \frac{\mathbf{v_3}}{\|\mathbf{v_3}\|}
+\]%
+
+\[%
+    \mathbf{u_1}
+    =
+    \begin{bmatrix}1/2\\-1/2\\1/2\\-1/2\end{bmatrix}
+    \qquad
+    \mathbf{u_2}
+    =
+    \begin{bmatrix}3\sqrt{5}/10\\3\sqrt{5}/10\\\sqrt{5}/10\\\sqrt{5}/10\end{bmatrix}
+    \qquad
+    \mathbf{u_3}
+    =
+    \begin{bmatrix}-\sqrt{5}/10\\-\sqrt{5}/10\\3\sqrt{5}/10\\3\sqrt{5}/10\end{bmatrix}    
+\]%
+
+\clearpage
+\section{Question 4} 
+Ways to check whether a vector belongs to certain spaces:
+
+\[%
+    \mathbf{v} \in  \text{Col}(\mathbf{A}) \text{ if } 
+    \mathbf{A}\mathbf{x}
+    =
+    \mathbf{v}
+\]%
+
+\[%
+    \mathbf{v} \in \text{Row}(\mathbf{A}) \text{ if } 
+    \mathbf{A}^{T}\mathbf{x}
+    =
+    \mathbf{v}
+\]%
+
+\[%
+    \mathbf{v} \in \text{Nul}(\mathbf{A}) \text{ if } 
+    \mathbf{A}\mathbf{v}
+    =
+    \mathbf{0}
+\]%
+\subsection{Part (a)} 
+Can a vector $\mathbf{v}$ exist s.t. $\mathbf{v} \in \text{Col}(\mathbf{A})$ and
+$\mathbf{v} \in \text{Row}(\mathbf{A})$?
+
+If $\mathbf{v} \in \text{Col}(\mathbf{A})$, then:
+
+\[%
+    \mathbf{A}\mathbf{x}=\mathbf{v}
+\]%
+
+But if $\mathbf{v} \in \text{Row}(\mathbf{A})$, then:
+
+\[%
+    \mathbf{A}^{T}\mathbf{x}
+    =
+    \mathbf{v}
+\]%
+
+Then:
+
+\[%
+    \mathbf{A}^{-1}\mathbf{A}^{T}\mathbf{x}=\mathbf{x}
+\]%
+
+Meaning the following must hold for $\mathbf{v}$ to be contained in both vector
+spaces.
+
+\[%
+    \mathbf{A}^{-1}\mathbf{A}^{T} = \mathbf{I}
+\]%
+
+\subsection{Part (b)} 
+Can a vector $\mathbf{v}$ exist s.t. $\mathbf{v} \in \text{Row}(\mathbf{A})$ and
+$\mathbf{v} \in \text{Nul}(\mathbf{A})$?
+
+
+\subsection{Part (c)} 
+Can a vector $\mathbf{v}$ exist s.t. $\mathbf{v} \in \text{Col}(\mathbf{A})$ and
+$\mathbf{v} \in \text{Nul}(\mathbf{A})$?
+
+
+
 
 \end{document}
 
