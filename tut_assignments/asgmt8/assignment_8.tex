@@ -418,6 +418,7 @@ Ways to check whether a vector belongs to certain spaces:
 
 \[%
     \mathbf{v} \in  \text{Col}(\mathbf{A}) \text{ if } 
+    \exists \ \mathbf{A} , \mathbf{x} \ \text{  s.t. }
     \mathbf{A}\mathbf{x}
     =
     \mathbf{v}
@@ -425,6 +426,7 @@ Ways to check whether a vector belongs to certain spaces:
 
 \[%
     \mathbf{v} \in \text{Row}(\mathbf{A}) \text{ if } 
+    \exists \ \mathbf{A} , \mathbf{x} \ \text{ s.t. }
     \mathbf{A}^{T}\mathbf{x}
     =
     \mathbf{v}
@@ -432,6 +434,7 @@ Ways to check whether a vector belongs to certain spaces:
 
 \[%
     \mathbf{v} \in \text{Nul}(\mathbf{A}) \text{ if } 
+    \exists \ \mathbf{A} \ \text{ s.t. }
     \mathbf{A}\mathbf{v}
     =
     \mathbf{0}
@@ -467,17 +470,145 @@ spaces.
     \mathbf{A}^{-1}\mathbf{A}^{T} = \mathbf{I}
 \]%
 
+Corollary:
+
+This must also mean that $\mathbf{A}$ is a square, non-singular matrix.
+
+\textbf{Note:} This might mean (I'm not sure) that $\mathbf{A}$ has to be the
+identity?
+
 \subsection{Part (b)} 
 Can a vector $\mathbf{v}$ exist s.t. $\mathbf{v} \in \text{Row}(\mathbf{A})$ and
 $\mathbf{v} \in \text{Nul}(\mathbf{A})$?
 
+The matrix $\mathbf{A}$ is a linear map s.t. for an $m \times n$ matrix:
+
+\[%
+    \mathbf{A}: \R^{n} \mapsto \R^{m} 
+\]%
+
+It should also be noted that:
+
+\[%
+    \text{Row}(\mathbf{A}) \subset \R^{m}
+\]%
+
+\[%
+    \text{Nul}(\mathbf{A}) \subset \R^{m}
+\]%
+
+Then if $\mathbf{A}$ is a square, non-singular matrix, then:
+
+\[%
+    \mathbf{A}^{T}\mathbf{x}
+    =
+    \mathbf{v}
+    \qquad
+    \mathbf{A}\mathbf{v}
+    =
+    \mathbf{0}
+\]%
+
+\[%
+    \mathbf{v}
+    =
+    \mathbf{A}^{-1}\mathbf{0}
+    =
+    \mathbf{0}
+\]%
+
+\[%
+    \therefore \ 
+    \mathbf{A}^{T}\mathbf{x}
+    =
+    \mathbf{0}
+\]%
+
+By invertible-matrix-theorem:
+
+\[%
+    (\mathbf{A}^{-1})^{T} 
+    =
+    (\mathbf{A}^{T})^{-1}
+    \Rightarrow 
+    \exists \
+    (\mathbf{A}^{T})^{-1}
+    \ \forall \
+    \mathbf{A}^{-1}
+\]%
+
+Meaning that $\mathbf{x}=\mathbf{0}$ and $\mathbf{v}=\mathbf{0}$ for
+$\mathbf{v}$ to lie in both $\text{Row}(\mathbf{A})$ and
+$\text{Nul}(\mathbf{A})$.
 
 \subsection{Part (c)} 
 Can a vector $\mathbf{v}$ exist s.t. $\mathbf{v} \in \text{Col}(\mathbf{A})$ and
 $\mathbf{v} \in \text{Nul}(\mathbf{A})$?
 
+The matrix $\mathbf{A}$ is a linear map s.t. for an $m \times n$ matrix:
 
+\[%
+    \mathbf{A}: \R^{n} \mapsto \R^{m} 
+\]%
 
+It should also be noted that:
 
+\[%
+    \text{Col}(\mathbf{A}) \subset \R^{m}
+\]%
+
+\[%
+    \text{Nul}(\mathbf{A}) \subset \R^{n}
+\]%
+
+Meaning that $m=n$ for there to be a vector, $\mathbf{v}$, that lies in both spaces.
+
+What we are now really asking is that:
+
+\[%
+    \exists \ \mathbf{v} \ | \ \mathbf{v} \in 
+    \big(  \text{Col}(\mathbf{A}) 
+    \ \cap \ 
+\text{Nul}(\mathbf{A}) \big)
+\]%
+
+A solution is the trivial solution, \textbf{v} = $\mathbf{0}$.
+
+Constraint from the column space:
+\[%
+    \mathbf{Ax}
+    =
+    \mathbf{v}
+    =
+    \mathbf{0}
+\]%
+Constraint from the null space:
+\[%
+    \mathbf{Av}
+    =
+    \mathbf{0}   
+\]%
+
+And again, if $\mathbf{A}$ is a square, invertible matrix, then:
+
+\[%
+    \mathbf{v}
+    =
+    \mathbf{0}
+\]%
+Meaning:
+
+\[%
+    \mathbf{Ax}
+    =
+    \mathbf{0}
+\]%
+And hence:
+
+\[%
+    \mathbf{x}
+    =
+    \mathbf{0}
+\]%
 \end{document}
 
